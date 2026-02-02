@@ -1,16 +1,45 @@
+import { Route, Routes } from 'react-router'
 import './App.css'
-import { ModeToggle } from './components/mode-toggle'
-import { Button } from './components/ui/button'
+import Layout from './components/layout'
+import { About } from './pages/about'
+import Project from './pages/project'
+import Contact from './pages/contact'
+import Career from './pages/career'
 
 function App() {
 
   return (
-    <div className='flex h-screen justify-center items-center'>
-      <Button >
-        Hey 🎊
-      </Button>
-      <ModeToggle />
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Layout>
+            <About />
+          </Layout>
+        } />
+      <Route
+        path="/career"
+        element={
+          <Layout>
+            <Career />
+          </Layout>
+        } />
+      <Route
+        path="/projects"
+        element={
+          <Layout>
+            <Project />
+          </Layout>
+        } />
+      <Route
+        path="/contact"
+        element={
+          <Layout>
+            <Contact />
+          </Layout>
+        } />
+
+    </Routes>
   )
 }
 
