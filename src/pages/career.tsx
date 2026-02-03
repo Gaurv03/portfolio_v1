@@ -77,23 +77,24 @@ const Career = () => {
     ]
 
     return (
-        <div className="max-w-5xl mx-auto pb-24 pt-12 px-6 md:px-12">
+        <div className="space-y-24 pb-12">
             {/* Header Section */}
-            <div className="flex flex-col items-center text-center space-y-6 mb-20">
+            <div className="flex flex-col items-center text-center space-y-8">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-muted/50 border border-border text-xs font-bold uppercase tracking-[0.2em] text-primary backdrop-blur-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400 backdrop-blur-sm"
                 >
-                    <BaggageClaim size={14} /> Professional Journey
+                    <BaggageClaim size={14} fill="currentColor" /> Professional Journey
                 </motion.div>
 
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-5xl md:text-7xl font-black tracking-tight"
+                    className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.8]"
                 >
-                    Career <span className="text-transparent bg-clip-text bg-linear-to-br from-blue-500 via-purple-500 to-pink-500 leading-tight">Timeline</span>
+                    Career <br className="md:hidden" />
+                    <span className="text-transparent bg-clip-text bg-linear-to-br from-blue-500 via-purple-500 to-pink-500">Timeline.</span>
                 </motion.h1>
 
                 <motion.div
@@ -102,16 +103,16 @@ const Career = () => {
                     transition={{ delay: 0.1 }}
                     className="flex flex-wrap justify-center gap-6"
                 >
-                    <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-card border border-border shadow-sm">
-                        <span className="text-2xl font-black text-blue-500">2.5+</span>
-                        <span className="text-xs uppercase font-bold text-muted-foreground leading-none text-left">
+                    <div className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-card/40 backdrop-blur-md border border-border shadow-sm">
+                        <span className="text-3xl font-black text-blue-500 tracking-tighter">2.5+</span>
+                        <span className="text-[10px] uppercase font-black text-muted-foreground leading-none text-left tracking-widest">
                             Years of<br />Experience
                         </span>
                     </div>
-                    <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-card border border-border shadow-sm">
-                        <span className="text-2xl font-black text-purple-500">2</span>
-                        <span className="text-xs uppercase font-bold text-muted-foreground leading-none text-left">
-                            Companies<br />Worked
+                    <div className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-card/40 backdrop-blur-md border border-border shadow-sm">
+                        <span className="text-3xl font-black text-purple-500 tracking-tighter">3+</span>
+                        <span className="text-[10px] uppercase font-black text-muted-foreground leading-none text-left tracking-widest">
+                            Built<br />Solutions
                         </span>
                     </div>
                 </motion.div>
@@ -163,14 +164,14 @@ const Career = () => {
 
                                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
                                     <div className="lg:col-span-7 space-y-6">
-                                        <p className="text-muted-foreground leading-relaxed font-medium">
+                                        <p className="text-muted-foreground leading-relaxed font-medium text-lg">
                                             {exp.description}
                                         </p>
                                         <ul className="space-y-4">
                                             {exp.achievements.map((item, i) => (
-                                                <li key={i} className="flex items-start gap-3 group/item">
-                                                    <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0 group-hover/item:scale-150 transition-transform" />
-                                                    <span className="text-sm font-semibold text-foreground/80 group-hover/item:text-foreground transition-colors">
+                                                <li key={i} className="flex items-start gap-4 group/item">
+                                                    <div className="mt-2 h-1.5 w-1.5 rounded-full bg-primary shrink-0 group-hover/item:scale-150 transition-transform" />
+                                                    <span className="text-base font-semibold text-foreground/80 group-hover/item:text-foreground transition-colors leading-relaxed">
                                                         {item}
                                                     </span>
                                                 </li>

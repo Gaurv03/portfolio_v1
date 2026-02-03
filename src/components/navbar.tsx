@@ -54,7 +54,7 @@ export const Navbar = () => {
                             key={link.path}
                             to={link.path}
                             className={({ isActive }) => `
-                                relative px-4 py-1.5 text-sm font-medium transition-colors
+                                relative px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] transition-colors
                                 ${isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"}
                             `}
                         >

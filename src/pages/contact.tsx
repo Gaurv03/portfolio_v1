@@ -1,17 +1,18 @@
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import {
-    Mail,
     MessageSquare,
     CheckCircle2,
     ArrowRight,
-    Globe
+    Sparkles,
+    Zap,
+    Send
 } from "lucide-react"
 import {
     BrandGithub,
     BrandLinkedin,
-    BrandTelegram,
-    BrandTwitter
+    BrandTwitter,
+    BrandInstagram
 } from "tabler-icons-react"
 import { useState } from "react"
 
@@ -31,7 +32,7 @@ const staggerContainer = {
 
 const Contact = () => {
     const [status, setStatus] = useState<"idle" | "success">("idle")
-    const [focusedField, setFocusedField] = useState<string | null>(null)
+    const [_focusedField, setFocusedField] = useState<string | null>(null)
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
@@ -40,256 +41,222 @@ const Contact = () => {
     }
 
     return (
-        <div className="relative isolate min-h-[90vh] overflow-hidden">
-            {/* Decorative Background Elements */}
-            <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        <motion.div
+            initial="initial"
+            animate="animate"
+            variants={staggerContainer}
+            className="space-y-24 pb-12 relative"
+        >
+            {/* Hero Section */}
+            <div className="flex flex-col items-center text-center space-y-8 mb-24 px-6">
                 <motion.div
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        rotate: [0, 90, 0],
-                        x: [0, 50, 0],
-                        y: [0, -30, 0]
-                    }}
-                    transition={{ duration: 20, repeat: Infinity }}
-                    className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px]"
-                />
-                <motion.div
-                    animate={{
-                        scale: [1, 1.1, 1],
-                        rotate: [0, -45, 0],
-                        x: [0, -50, 0],
-                        y: [0, 50, 0]
-                    }}
-                    transition={{ duration: 15, repeat: Infinity }}
-                    className="absolute top-[20%] -right-[5%] w-[35%] h-[35%] bg-blue-600/10 rounded-full blur-[100px]"
-                />
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-border to-transparent" />
+                    variants={fadeInUp}
+                    className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-black uppercase tracking-[0.2em] text-blue-500 dark:text-blue-400 backdrop-blur-sm"
+                >
+                    <Zap size={12} fill="currentColor" />
+                    Available for New Ventures
+                </motion.div>
+
+                <motion.h1
+                    variants={fadeInUp}
+                    className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-foreground"
+                >
+                    Ready to make <br />
+                    <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 via-purple-500 to-pink-500">
+                        magic happen?
+                    </span>
+                </motion.h1>
+
+                <motion.p
+                    variants={fadeInUp}
+                    className="text-muted-foreground text-xl max-w-2xl font-medium leading-relaxed"
+                >
+                    Whether you're starting a new brand or need to scale your existing architecture,
+                    I'm here to build the bridge between your vision and reality.
+                </motion.p>
             </div>
 
-            <motion.div
-                initial="initial"
-                animate="animate"
-                variants={staggerContainer}
-                className="max-w-7xl mx-auto pb-24 pt-12 px-6 md:px-12"
-            >
-                {/* Hero Section */}
-                <div className="flex flex-col items-center text-center space-y-6 mb-20">
-                    <motion.div
-                        variants={fadeInUp}
-                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-muted/50 border border-border text-xs font-bold uppercase tracking-[0.2em] text-blue-500 dark:text-blue-400 backdrop-blur-sm"
-                    >
-                        <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                        </span>
-                        Available for Projects
-                    </motion.div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch px-6">
+                {/* Left Column: Direct Action & Socials */}
+                <div className="lg:col-span-5 flex flex-col justify-between space-y-12">
+                    <div className="space-y-8">
+                        <motion.div variants={fadeInUp} className="space-y-4">
+                            <h3 className="text-sm font-black uppercase tracking-widest text-muted-foreground flex items-center gap-4">
+                                <Sparkles size={16} className="text-blue-500" />
+                                The Direct Route
+                            </h3>
+                            <p className="text-2xl font-bold leading-tight">
+                                Skip the formalities and jump straight into my orbit.
+                            </p>
+                        </motion.div>
 
-                    <motion.h1
-                        variants={fadeInUp}
-                        className="text-5xl md:text-7xl font-black tracking-tight leading-[1.1]"
-                    >
-                        Let's build something<br />
-                        <span className="text-transparent bg-clip-text bg-linear-to-br from-blue-400 via-purple-500 to-pink-500 drop-shadow-sm">
-                            extraordinary
-                        </span>
-                    </motion.h1>
+                        <div className="grid grid-cols-1 gap-4">
+                            <motion.a
+                                href="mailto:gauravupadhyay786.gu@gmail.com"
+                                variants={fadeInUp}
+                                whileHover={{ scale: 1.02, x: 10 }}
+                                className="group flex items-center justify-between p-6 rounded-3xl bg-card border border-border hover:border-blue-500/50 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.2)] transition-all"
+                            >
+                                <div className="flex items-center gap-5">
+                                    <div className="p-4 rounded-2xl bg-blue-500/10 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                        <Send size={24} />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-1">Email Me</p>
+                                        <p className="text-lg font-bold">Start a thread</p>
+                                    </div>
+                                </div>
+                                <ArrowRight size={20} className="text-muted-foreground group-hover:text-blue-500 transition-colors" />
+                            </motion.a>
 
-                    <motion.p
-                        variants={fadeInUp}
-                        className="text-muted-foreground text-xl max-w-2xl font-medium leading-relaxed"
-                    >
-                        I'm currently looking for new opportunities and collaborations.
-                        Whether you have a question or just want to connect, my inbox is always open.
-                    </motion.p>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-                    {/* Contact Channels */}
-                    <div className="lg:col-span-5 space-y-12">
-                        <section className="space-y-8">
-                            <motion.h3 variants={fadeInUp} className="text-sm font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-3">
-                                <div className="h-px w-8 bg-border" /> Direct Channels
-                            </motion.h3>
-
-                            <div className="grid gap-6">
-                                {[
-                                    {
-                                        icon: Mail,
-                                        label: "Send an Email",
-                                        value: "gauravupadhyay786.gu@gmail.com",
-                                        color: "from-blue-500/20 to-blue-600/20",
-                                        iconCol: "text-blue-400"
-                                    },
-                                    {
-                                        icon: MessageSquare,
-                                        label: "Telegram",
-                                        value: "@gaurav_dev",
-                                        color: "from-sky-500/20 to-sky-600/20",
-                                        iconCol: "text-sky-400"
-                                    },
-                                    {
-                                        icon: Globe,
-                                        label: "Working Hours",
-                                        value: "Mon — Fri, 9 AM - 6 PM IST",
-                                        color: "from-purple-500/20 to-purple-600/20",
-                                        iconCol: "text-purple-400"
-                                    },
-                                ].map((item, i) => (
-                                    <motion.div
-                                        key={i}
-                                        variants={fadeInUp}
-                                        whileHover={{ x: 10 }}
-                                        className="group relative flex items-center gap-6 p-6 rounded-3xl bg-card/50 border border-border backdrop-blur-md overflow-hidden transition-all hover:bg-muted"
-                                    >
-                                        <div className={`absolute inset-0 bg-linear-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
-                                        <div className={`relative p-4 rounded-2xl bg-muted border border-border ${item.iconCol} group-hover:scale-110 transition-transform`}>
-                                            <item.icon size={24} strokeWidth={1.5} />
-                                        </div>
-                                        <div className="relative">
-                                            <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest mb-1">{item.label}</p>
-                                            <p className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">{item.value}</p>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </section>
-
-                        <section className="space-y-8">
-                            <motion.h3 variants={fadeInUp} className="text-sm font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-3">
-                                <div className="h-px w-8 bg-border" /> Connectivity
-                            </motion.h3>
-
-                            <div className="flex flex-wrap gap-4">
-                                {[
-                                    { icon: BrandGithub, color: "hover:bg-white hover:text-black", label: "GitHub" },
-                                    { icon: BrandLinkedin, color: "hover:bg-blue-600 hover:text-white", label: "LinkedIn" },
-                                    { icon: BrandTwitter, color: "hover:bg-sky-500 hover:text-white", label: "Twitter" },
-                                    { icon: BrandTelegram, color: "hover:bg-purple-600 hover:text-white", label: "Telegram" },
-                                ].map((Social, i) => (
-                                    <motion.a
-                                        key={i}
-                                        href="#"
-                                        variants={fadeInUp}
-                                        whileHover={{ y: -8 }}
-                                        whileTap={{ scale: 0.9 }}
-                                        className={`flex items-center gap-3 px-6 py-4 rounded-2xl bg-card/50 border border-border backdrop-blur-md transition-all duration-300 ${Social.color} group`}
-                                    >
-                                        <Social.icon size={20} />
-                                        <span className="text-sm font-bold opacity-0 group-hover:opacity-100 absolute group-hover:relative transition-all duration-300">
-                                            {Social.label}
-                                        </span>
-                                    </motion.a>
-                                ))}
-                            </div>
-                        </section>
+                            <motion.a
+                                href="#"
+                                variants={fadeInUp}
+                                whileHover={{ scale: 1.02, x: 10 }}
+                                className="group flex items-center justify-between p-6 rounded-3xl bg-card border border-border hover:border-purple-500/50 hover:shadow-[0_0_30px_-10px_rgba(168,85,247,0.2)] transition-all"
+                            >
+                                <div className="flex items-center gap-5">
+                                    <div className="p-4 rounded-2xl bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                                        <MessageSquare size={24} />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-1">Chat</p>
+                                        <p className="text-lg font-bold">Telegram / WhatsApp</p>
+                                    </div>
+                                </div>
+                                <ArrowRight size={20} className="text-muted-foreground group-hover:text-purple-500 transition-colors" />
+                            </motion.a>
+                        </div>
                     </div>
 
-                    {/* Experimental Contact Form */}
-                    <motion.div
-                        variants={fadeInUp}
-                        className="lg:col-span-7"
-                    >
-                        <Card className="relative border-border bg-card/60 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden shadow-2xl">
-                            {/* Accent Glow */}
-                            <div className="absolute top-0 left-1/4 w-1/2 h-px bg-linear-to-r from-transparent via-blue-500 to-transparent opacity-50 transition-all duration-500 group-focus-within:opacity-100" />
+                    <div className="space-y-6 pt-8 border-t border-border">
+                        <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">Digital Presence</h4>
+                        <div className="flex flex-wrap gap-3">
+                            {[
+                                { icon: BrandLinkedin, href: "#", color: "hover:bg-blue-600" },
+                                { icon: BrandGithub, href: "#", color: "hover:bg-neutral-800" },
+                                { icon: BrandTwitter, href: "#", color: "hover:bg-sky-500" },
+                                { icon: BrandInstagram, href: "#", color: "hover:bg-pink-600" },
+                            ].map((social, i) => (
+                                <motion.a
+                                    key={i}
+                                    href={social.href}
+                                    variants={fadeInUp}
+                                    whileHover={{ y: -5, scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
+                                    className={`w-14 h-14 flex items-center justify-center rounded-2xl bg-card border border-border transition-all duration-300 ${social.color} hover:text-white group`}
+                                >
+                                    <social.icon size={22} className="group-hover:scale-110 transition-transform" />
+                                </motion.a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
 
-                            <CardContent className="p-8 md:p-14 space-y-10">
-                                <div className="space-y-2">
-                                    <h2 className="text-3xl font-black">Drop me a message</h2>
-                                    <p className="text-muted-foreground font-medium">I usually reply within 24 hours.</p>
-                                </div>
+                {/* Right Column: High-Impact Form */}
+                <motion.div
+                    variants={fadeInUp}
+                    className="lg:col-span-7"
+                >
+                    <Card className="h-full border-none bg-linear-to-br from-card to-card/50 backdrop-blur-xl rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-500/5 border border-white/5">
+                        <CardContent className="p-10 md:p-16 space-y-12">
+                            <div className="space-y-2">
+                                <h2 className="text-4xl font-black tracking-tight">Fuel the vision</h2>
+                                <p className="text-muted-foreground font-medium text-lg">Send over the briefing and let's get moving.</p>
+                            </div>
 
-                                <form onSubmit={handleSubmit} className="space-y-8">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div className="relative group">
-                                            <label className={`absolute left-0 -top-6 text-[10px] font-black uppercase tracking-widest transition-all ${focusedField === 'name' ? 'text-blue-400' : 'text-muted-foreground'}`}>
-                                                Full Name
-                                            </label>
-                                            <input
-                                                type="text"
-                                                required
-                                                onFocus={() => setFocusedField('name')}
-                                                onBlur={() => setFocusedField(null)}
-                                                className="w-full py-4 bg-transparent border-b border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/30 font-bold text-lg"
-                                                placeholder="Who's calling?"
-                                            />
-                                        </div>
-                                        <div className="relative group">
-                                            <label className={`absolute left-0 -top-6 text-[10px] font-black uppercase tracking-widest transition-all ${focusedField === 'email' ? 'text-blue-400' : 'text-muted-foreground'}`}>
-                                                Email Address
-                                            </label>
-                                            <input
-                                                type="email"
-                                                required
-                                                onFocus={() => setFocusedField('email')}
-                                                onBlur={() => setFocusedField(null)}
-                                                className="w-full py-4 bg-transparent border-b border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/30 font-bold text-lg"
-                                                placeholder="where@to.reply?"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="relative group">
-                                        <label className={`absolute left-0 -top-6 text-[10px] font-black uppercase tracking-widest transition-all ${focusedField === 'subject' ? 'text-blue-400' : 'text-muted-foreground'}`}>
-                                            Project Type
-                                        </label>
+                            <form onSubmit={handleSubmit} className="space-y-10">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                    <div className="relative">
                                         <input
                                             type="text"
                                             required
-                                            onFocus={() => setFocusedField('subject')}
+                                            onFocus={() => setFocusedField('name')}
                                             onBlur={() => setFocusedField(null)}
-                                            className="w-full py-4 bg-transparent border-b border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/30 font-bold text-lg"
-                                            placeholder="What are we building?"
+                                            className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold text-xl peer"
+                                            placeholder=" "
                                         />
-                                    </div>
-
-                                    <div className="relative group">
-                                        <label className={`absolute left-0 -top-6 text-[10px] font-black uppercase tracking-widest transition-all ${focusedField === 'message' ? 'text-blue-400' : 'text-muted-foreground'}`}>
-                                            The Brief
+                                        <label className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}>
+                                            Your Name
                                         </label>
-                                        <textarea
-                                            rows={4}
-                                            required
-                                            onFocus={() => setFocusedField('message')}
-                                            onBlur={() => setFocusedField(null)}
-                                            className="w-full py-4 bg-transparent border-b border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/30 font-bold text-lg resize-none"
-                                            placeholder="Tell me your vision..."
-                                        />
                                     </div>
+                                    <div className="relative">
+                                        <input
+                                            type="email"
+                                            required
+                                            onFocus={() => setFocusedField('email')}
+                                            onBlur={() => setFocusedField(null)}
+                                            className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold text-xl peer"
+                                            placeholder=" "
+                                        />
+                                        <label className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}>
+                                            Email Address
+                                        </label>
+                                    </div>
+                                </div>
 
-                                    <button
-                                        type="submit"
-                                        disabled={status === "success"}
-                                        className="group relative w-full h-16 overflow-hidden rounded-2xl bg-foreground text-background font-black text-lg transition-all active:scale-95 disabled:opacity-50"
-                                    >
-                                        <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-10 transition-opacity" />
-                                        <div className="relative flex items-center justify-center gap-3">
-                                            {status === "success" ? (
-                                                <motion.div
-                                                    initial={{ scale: 0 }}
-                                                    animate={{ scale: 1 }}
-                                                    className="flex items-center gap-3"
-                                                >
-                                                    <CheckCircle2 size={24} />
-                                                    Sent Successfully
-                                                </motion.div>
-                                            ) : (
-                                                <>
-                                                    Start a Conversation
-                                                    <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-                                                </>
-                                            )}
-                                        </div>
-                                    </button>
-                                </form>
-                            </CardContent>
-                        </Card>
-                    </motion.div>
-                </div>
-            </motion.div>
-        </div>
+                                <div className="relative">
+                                    <input
+                                        type="text"
+                                        required
+                                        onFocus={() => setFocusedField('subject')}
+                                        onBlur={() => setFocusedField(null)}
+                                        className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold text-xl peer"
+                                        placeholder=" "
+                                    />
+                                    <label className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}>
+                                        Inquiry Subject
+                                    </label>
+                                </div>
+
+                                <div className="relative">
+                                    <textarea
+                                        rows={3}
+                                        required
+                                        onFocus={() => setFocusedField('message')}
+                                        onBlur={() => setFocusedField(null)}
+                                        className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold text-xl resize-none peer"
+                                        placeholder=" "
+                                    />
+                                    <label className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}>
+                                        Project Briefing
+                                    </label>
+                                </div>
+
+                                <motion.button
+                                    type="submit"
+                                    disabled={status === "success"}
+                                    whileHover={{ scale: 1.01 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="group relative w-full h-20 overflow-hidden rounded-[1.5rem] bg-foreground text-background font-black text-xl transition-all shadow-xl shadow-foreground/10"
+                                >
+                                    <div className="absolute inset-0 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <div className="relative flex items-center justify-center gap-4">
+                                        {status === "success" ? (
+                                            <motion.div
+                                                initial={{ y: 20, opacity: 0 }}
+                                                animate={{ y: 0, opacity: 1 }}
+                                                className="flex items-center gap-3 text-white"
+                                            >
+                                                <CheckCircle2 size={28} />
+                                                Dispatched
+                                            </motion.div>
+                                        ) : (
+                                            <>
+                                                <span className="group-hover:text-white transition-colors duration-300">Initiate Project</span>
+                                                <ArrowRight size={24} className="group-hover:translate-x-3 group-hover:text-white transition-all duration-300" />
+                                            </>
+                                        )}
+                                    </div>
+                                </motion.button>
+                            </form>
+                        </CardContent>
+                    </Card>
+                </motion.div>
+            </div>
+        </motion.div>
     )
 }
 
 export default Contact
+

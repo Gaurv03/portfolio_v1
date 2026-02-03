@@ -4,12 +4,14 @@ import { Card, CardContent } from "@/components/ui/card"
 import {
     Layout,
     Server,
+    ExternalLink,
     ChevronRight,
-    Rocket
+    Rocket,
+    Terminal,
+    Eye
 } from "lucide-react"
 import {
-    BrandGithub,
-    Link as LinkIcon
+    BrandGithub
 } from "tabler-icons-react"
 
 interface Project {
@@ -83,28 +85,98 @@ const projects: Project[] = [
         image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=800&auto=format&fit=crop",
         github: "#",
         demo: "#"
-    },
-    {
-        id: 7,
-        title: "CryptoVoyage UI",
-        description: "A dark-themed crypto portfolio tracker with real-time price feeds and interactive candle charts.",
-        category: "Frontend",
-        tech: ["React", "Vite", "Tailwind CSS", "CoinGecko API"],
-        image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=800&auto=format&fit=crop",
-        github: "#",
-        demo: "#"
-    },
-    {
-        id: 8,
-        title: "Zenith SaaS Landing",
-        description: "High-conversion landing page with horizontal scroll parallax, 3D elements, and optimized LCP metrics.",
-        category: "Frontend",
-        tech: ["Next.js", "Three.js", "Tailwind CSS", "GSAP"],
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
-        github: "#",
-        demo: "#"
     }
 ]
+
+const fadeInUp = {
+    initial: { y: 20, opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+}
+
+const ProjectCard = ({ project, index }: { project: Project, index: number }) => (
+    <motion.div
+        layout
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ delay: index * 0.05, duration: 0.4 }}
+        className="group relative"
+    >
+        <Card className="h-full bg-card/20 border-border/50 backdrop-blur-xl overflow-hidden hover:border-blue-500/30 transition-all duration-500 rounded-[2rem]">
+            {/* Image Preview with sophisticated overlay */}
+            <div className="relative aspect-16/10 overflow-hidden">
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+
+                {/* Advanced Overlay */}
+                <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent opacity-80" />
+
+                <div className="absolute top-4 left-4 flex gap-2">
+                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[9px] font-black uppercase tracking-tighter text-white">
+                        {project.category === "Fullstack" ? <Server size={10} /> : <Layout size={10} />}
+                        {project.category}
+                    </div>
+                </div>
+
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex gap-4">
+                        <motion.a
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            href={project.demo}
+                            className="p-3 rounded-full bg-white text-black shadow-xl"
+                        >
+                            <Eye size={20} />
+                        </motion.a>
+                        <motion.a
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            href={project.github}
+                            className="p-3 rounded-full bg-black text-white border border-white/20 shadow-xl"
+                        >
+                            <BrandGithub size={20} />
+                        </motion.a>
+                    </div>
+                </div>
+            </div>
+
+            <CardContent className="p-8 flex flex-col h-[calc(100%-aspect-16/10)]">
+                <div className="space-y-3 grow">
+                    <h3 className="text-2xl font-black tracking-tighter group-hover:text-blue-400 transition-colors">
+                        {project.title}
+                    </h3>
+                    <p className="text-base text-muted-foreground font-medium leading-relaxed line-clamp-2">
+                        {project.description}
+                    </p>
+
+                    {/* Tech Stack Pills */}
+                    <div className="flex flex-wrap gap-2 pt-2">
+                        {project.tech.slice(0, 4).map((t, idx) => (
+                            <span key={idx} className="px-2.5 py-1 text-[10px] font-black uppercase bg-muted/50 border border-border/50 rounded-lg text-muted-foreground">
+                                {t}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-border/50 flex items-center justify-between">
+                    <button className="text-[10px] items-center gap-2 font-black uppercase tracking-[0.2em] text-blue-500 hover:text-blue-400 transition-all flex group/btn">
+                        Explore Case Study
+                        <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </button>
+                    <Terminal size={14} className="text-muted-foreground/30" />
+                </div>
+            </CardContent>
+
+            {/* Subtle Gradient Glow */}
+            <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+        </Card>
+    </motion.div>
+)
 
 const Projects = () => {
     const [filter, setFilter] = useState<"All" | "Fullstack" | "Frontend">("All")
@@ -114,50 +186,57 @@ const Projects = () => {
     )
 
     return (
-        <div className="max-w-7xl mx-auto pb-20 px-4 md:px-8">
+        <div className="space-y-24 pb-12">
             {/* Header Section */}
-            <div className="text-center space-y-4 mb-16 mt-10">
+            <div className="flex flex-col items-center text-center space-y-8 px-6">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-muted/50 border border-border text-sm font-medium text-purple-600 dark:text-purple-400"
+                    variants={fadeInUp}
+                    initial="initial"
+                    animate="animate"
+                    className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-[10px] font-black uppercase tracking-[0.3em] text-orange-600 dark:text-orange-400 backdrop-blur-sm"
                 >
-                    <Rocket size={14} /> 2.5+ Years of Building
+                    <Rocket size={12} fill="currentColor" /> Selected Works
                 </motion.div>
+
                 <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="text-4xl md:text-6xl font-bold tracking-tight"
+                    variants={fadeInUp}
+                    initial="initial"
+                    animate="animate"
+                    className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.8] mb-4"
                 >
-                    My <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-500 to-blue-500 text-shadow-glow">Creative Portfolio</span>
+                    Proof of <br />
+                    <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 via-emerald-500 to-indigo-600">
+                        Capability.
+                    </span>
                 </motion.h1>
+
                 <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="text-muted-foreground text-lg max-w-2xl mx-auto"
+                    variants={fadeInUp}
+                    initial="initial"
+                    animate="animate"
+                    className="text-muted-foreground text-xl max-w-2xl font-medium leading-relaxed"
                 >
-                    A curated collection of my work, ranging from complex full-stack architectures
-                    to pixel-perfect frontend experiences.
+                    A curated selection of engineering feats, where code meets creativity to solve
+                    complex human problems at scale.
                 </motion.p>
             </div>
 
-            {/* Filter Tabs */}
-            <div className="flex justify-center mb-12">
-                <div className="flex bg-muted/50 p-1 rounded-2xl border border-border backdrop-blur-md">
+            {/* Advanced Filter Tabs */}
+            <div className="flex justify-center mb-16 px-6">
+                <div className="flex p-1.5 bg-card/50 backdrop-blur-2xl rounded-3xl border border-border/50 shadow-2xl">
                     {["All", "Fullstack", "Frontend"].map((f) => (
                         <button
                             key={f}
                             onClick={() => setFilter(f as any)}
-                            className={`relative px-6 py-2 text-sm font-semibold transition-colors rounded-xl ${filter === f ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                            className={`relative px-8 py-3 text-xs font-black uppercase tracking-widest transition-all rounded-2xl ${filter === f ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                                 }`}
                         >
                             <span className="relative z-10">{f}</span>
                             {filter === f && (
                                 <motion.div
-                                    layoutId="filter-pill"
-                                    className="absolute inset-0 bg-background/80 rounded-xl border border-border shadow-sm"
+                                    layoutId="filter-active"
+                                    className="absolute inset-0 bg-background border border-border shadow-lg"
+                                    style={{ borderRadius: '1rem' }}
                                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                                 />
                             )}
@@ -166,82 +245,44 @@ const Projects = () => {
                 </div>
             </div>
 
-            {/* Projects Grid */}
+            {/* Dynamic Grid Layout */}
+            <div className="px-6">
+                <motion.div
+                    layout
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+                >
+                    <AnimatePresence mode="popLayout">
+                        {filteredProjects.map((project, idx) => (
+                            <ProjectCard
+                                key={project.id}
+                                project={project}
+                                index={idx}
+                            />
+                        ))}
+                    </AnimatePresence>
+                </motion.div>
+            </div>
+
+            {/* Bottom CTA */}
             <motion.div
-                layout
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="mt-32 text-center"
             >
-                <AnimatePresence mode="popLayout">
-                    {filteredProjects.map((project) => (
-                        <motion.div
-                            key={project.id}
-                            layout
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <Card className="group relative h-full bg-card/50 border-border backdrop-blur-sm overflow-hidden hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-xl">
-                                {/* Category Badge */}
-                                <div className="absolute top-4 left-4 z-10">
-                                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-background/80 backdrop-blur-md border border-border text-[10px] font-bold uppercase tracking-wider text-foreground">
-                                        {project.category === "Fullstack" ? <Server size={10} /> : <Layout size={10} />}
-                                        {project.category}
-                                    </div>
-                                </div>
-
-                                {/* Image Preview */}
-                                <div className="aspect-video relative overflow-hidden">
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-                                    />
-                                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                                </div>
-
-                                <CardContent className="p-6 space-y-4">
-                                    <h3 className="text-xl font-bold group-hover:text-purple-400 transition-colors">
-                                        {project.title}
-                                    </h3>
-                                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                                        {project.description}
-                                    </p>
-
-                                    {/* Tech Stack Chips */}
-                                    <div className="flex flex-wrap gap-2 pt-2">
-                                        {project.tech.map((t, idx) => (
-                                            <span key={idx} className="px-2 py-0.5 text-[10px] font-medium bg-muted border border-border rounded-md text-foreground/80">
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    {/* Footer / Links */}
-                                    <div className="flex items-center justify-between pt-6 mt-auto">
-                                        <div className="flex gap-4">
-                                            <a href={project.github} className="text-muted-foreground hover:text-white transition-colors">
-                                                <BrandGithub size={20} />
-                                            </a>
-                                            <a href={project.demo} className="text-muted-foreground hover:text-white transition-colors">
-                                                <LinkIcon size={20} />
-                                            </a>
-                                        </div>
-                                        <button className="flex items-center gap-1 text-xs font-bold text-purple-400 hover:text-purple-300 transition-colors">
-                                            VIEW DETAILS <ChevronRight size={14} />
-                                        </button>
-                                    </div>
-                                </CardContent>
-
-                                {/* Hover Border Glow */}
-                                <div className="absolute -inset-px bg-linear-to-r from-purple-500 to-blue-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity -z-10 blur-sm" />
-                            </Card>
-                        </motion.div>
-                    ))}
-                </AnimatePresence>
+                <a
+                    href="/contact"
+                    className="group inline-flex items-center gap-4 text-3xl md:text-5xl font-black tracking-tighter hover:text-blue-500 transition-colors"
+                >
+                    Have a vision?
+                    <div className="p-4 rounded-full bg-blue-500 text-white group-hover:translate-x-4 transition-transform">
+                        <ExternalLink size={32} />
+                    </div>
+                </a>
             </motion.div>
         </div>
     )
 }
 
 export default Projects
+

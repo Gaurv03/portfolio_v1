@@ -70,7 +70,7 @@ export const Footer = () => {
                                 <li key={link.path}>
                                     <NavLink
                                         to={link.path}
-                                        className="text-muted-foreground hover:text-foreground font-semibold flex items-center gap-2 transition-colors group"
+                                        className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors group"
                                     >
                                         <ChevronUp size={14} className="rotate-90 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                                         {link.name}

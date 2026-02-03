@@ -12,7 +12,9 @@ import {
     Sparkles,
     Calendar,
     Briefcase,
-    MapPin
+    ArrowUpRight,
+    Target,
+    Zap
 } from "lucide-react"
 import {
     BrandGithub,
@@ -26,7 +28,7 @@ import {
 const fadeInUp = {
     initial: { y: 20, opacity: 0 },
     animate: { y: 0, opacity: 1 },
-    transition: { duration: 0.5 }
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
 }
 
 const staggerContainer = {
@@ -39,15 +41,30 @@ const staggerContainer = {
 
 export const About = () => {
     const skills = [
-        { name: "Frontend", icons: [Code2, Globe], items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"] },
-        { name: "Backend", icons: [Database, Terminal], items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"] },
-        { name: "Tools & DevOps", icons: [Cpu, Layers], items: ["Git", "Docker", "Vite", "AWS", "Vercel", "Jenkins", "GitHub Actions"] }
+        {
+            name: "Frontend Architecture",
+            icons: [Code2, Globe],
+            items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+            color: "from-blue-500/10 to-blue-600/10"
+        },
+        {
+            name: "Backend systems",
+            icons: [Database, Terminal],
+            items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"],
+            color: "from-purple-500/10 to-purple-600/10"
+        },
+        {
+            name: "Cloud & Reliability",
+            icons: [Cpu, Layers],
+            items: ["Git", "Docker", "Vite", "AWS", "Vercel", "GitHub Actions"],
+            color: "from-emerald-500/10 to-emerald-600/10"
+        }
     ]
 
     const stats = [
-        { label: "Experience", value: "2.5+ Years", icon: Calendar },
-        { label: "Projects", value: "15+ Completed", icon: Briefcase },
-        { label: "Location", value: "India", icon: MapPin },
+        { label: "Engineering XP", value: "2.5y+", icon: Calendar },
+        { label: "Built Solutions", value: "15+", icon: Briefcase },
+        { label: "Global Reach", value: "Remote", icon: Globe },
     ]
 
     return (
@@ -55,144 +72,224 @@ export const About = () => {
             initial="initial"
             animate="animate"
             variants={staggerContainer}
-            className="max-w-6xl mx-auto space-y-12 pb-20"
+            className="space-y-24 pb-12"
         >
-            {/* Hero Section */}
-            <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Hero Section - Bold & Immersive */}
+            <section className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                 <motion.div
                     variants={fadeInUp}
-                    className="lg:col-span-4 flex justify-center lg:justify-start"
+                    className="lg:col-span-5 flex justify-center lg:justify-start"
                 >
-                    <div className="relative group">
-                        <div className="absolute -inset-1 bg-linear-to-r from-purple-600 to-blue-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                        <Avatar className="w-64 h-64 border-4 border-border shadow-2xl relative">
-                            <AvatarImage src="/user-image.jpg" className="object-cover" />
-                            <AvatarFallback className="bg-muted"><User size={64} /></AvatarFallback>
-                        </Avatar>
-                        <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ delay: 0.5, type: "spring" }}
-                            className="absolute bottom-4 right-4 bg-primary text-primary-foreground p-3 rounded-2xl shadow-xl"
-                        >
-                            <Sparkles size={24} />
-                        </motion.div>
+                    <div className="relative">
+                        {/* Interactive Background Glow */}
+                        <div className="absolute -inset-8 bg-linear-to-tr from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl opacity-50 animate-pulse" />
+
+                        <div className="relative group">
+                            <motion.div
+                                whileHover={{ scale: 1.05, rotate: -2 }}
+                                transition={{ type: "spring", stiffness: 300 }}
+                                className="relative z-10"
+                            >
+                                <Avatar className="w-72 h-72 md:w-80 md:h-80 border-2 border-white/10 shadow-2xl overflow-hidden rounded-[3rem]">
+                                    <AvatarImage src="/user-image.jpg" className="object-cover" />
+                                    <AvatarFallback className="bg-muted text-muted-foreground"><User size={80} /></AvatarFallback>
+                                </Avatar>
+
+                                {/* Status Chip */}
+                                <div className="absolute -bottom-4 -right-4 bg-background border border-border px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2">
+                                    <span className="relative flex h-3 w-3">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                                    </span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest">Active Now</span>
+                                </div>
+                            </motion.div>
+                        </div>
                     </div>
                 </motion.div>
 
                 <motion.div
                     variants={fadeInUp}
-                    className="lg:col-span-8 space-y-6 text-center lg:text-left"
+                    className="lg:col-span-7 space-y-8 text-center lg:text-left"
                 >
-                    <div className="space-y-2">
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-                            Gaurav <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-500 to-blue-500">Upadhyay</span>
+                    <div className="space-y-4">
+                        <motion.div
+                            variants={fadeInUp}
+                            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-[10px] font-black uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400 backdrop-blur-sm"
+                        >
+                            <User size={12} fill="currentColor" /> Software Engineer
+                        </motion.div>
+
+                        <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.8] text-foreground">
+                            I'm <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 via-purple-500 to-indigo-600">Gaurav.</span>
                         </h1>
-                        <h2 className="text-xl md:text-2xl font-medium text-muted-foreground">
-                            Full-Stack Software Engineer & UI Specialist
+                        <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-muted-foreground/80">
+                            Translating complex logic <br className="hidden md:block" />
+                            into <span className="text-foreground">Human-Centric</span> experiences.
                         </h2>
                     </div>
 
-                    <p className="text-lg leading-relaxed text-muted-foreground max-w-2xl mx-auto lg:mx-0">
-                        Passionate Full-Stack Engineer with over 2.5 years of experience building polished,
-                        performance-driven web applications. I bridge the gap between complex backend logic
-                        and elegant frontend experiences. Based in India 🇮🇳
+                    <p className="text-xl leading-relaxed text-muted-foreground font-medium max-w-2xl mx-auto lg:mx-0">
+                        Based in India 🇮🇳, I specialize in crafting high-performance full-stack architectures.
+                        My focus is on speed, scalability, and that elusive 'premium feel' that sets
+                        great software apart.
                     </p>
 
-                    <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                    <div className="flex flex-wrap gap-6 justify-center lg:justify-start pt-4">
                         {stats.map((stat, i) => (
-                            <div key={i} className="flex items-center gap-2 px-4 py-2 bg-muted/30 border border-border rounded-full backdrop-blur-sm">
-                                <stat.icon size={18} className="text-purple-400" />
-                                <span className="text-sm font-semibold">{stat.value}</span>
-                                <span className="text-sm text-muted-foreground">{stat.label}</span>
+                            <div key={i} className="group flex flex-col items-center lg:items-start">
+                                <span className="text-[10px] items-center gap-1.5 font-bold uppercase tracking-widest text-muted-foreground flex mb-1">
+                                    {stat.label}
+                                </span>
+                                <div className="flex items-center gap-2">
+                                    <stat.icon size={18} className="text-blue-500" />
+                                    <span className="text-2xl font-black tracking-tighter">{stat.value}</span>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </motion.div>
             </section>
 
-            {/* Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                {/* Left Side: Bio & Story */}
-                <motion.div variants={fadeInUp} className="lg:col-span-7 space-y-6">
-                    <Card className="h-full border-border bg-card/50 backdrop-blur-md overflow-hidden relative shadow-xl">
-                        <div className="absolute top-0 left-0 w-2 h-full bg-linear-to-b from-purple-500 to-blue-500" />
-                        <CardContent className="p-8 space-y-6">
-                            <h3 className="text-2xl font-bold flex items-center gap-2">
-                                <User className="text-purple-400" /> About Me
-                            </h3>
-                            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            {/* Content Deck */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12">
+                {/* Philosophical Bio */}
+                <motion.div variants={fadeInUp} className="lg:col-span-12">
+                    <Card className="border-none bg-linear-to-br from-card to-card/50 backdrop-blur-xl rounded-[3rem] overflow-hidden shadow-2xl border border-white/5">
+                        <CardContent className="p-10 md:p-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                            <div className="space-y-8">
+                                <div className="space-y-4">
+                                    <h3 className="text-3xl font-black tracking-tight flex items-center gap-4">
+                                        <div className="h-8 w-1 bg-blue-500 rounded-full" />
+                                        The Philosophy
+                                    </h3>
+                                    <p className="text-lg text-muted-foreground font-medium leading-relaxed italic">
+                                        "Code is not just a set of instructions for machines; it's a medium to craft seamless digital realities."
+                                    </p>
+                                </div>
+                                <div className="grid grid-cols-2 gap-6">
+                                    <div className="p-4 rounded-2xl bg-muted/30 border border-border space-y-2">
+                                        <Target size={20} className="text-blue-500" />
+                                        <h4 className="text-xs font-black uppercase tracking-widest">Precision</h4>
+                                        <p className="text-[10px] text-muted-foreground font-medium">Pixel-perfect implementation of complex designs.</p>
+                                    </div>
+                                    <div className="p-4 rounded-2xl bg-muted/30 border border-border space-y-2">
+                                        <Zap size={20} className="text-purple-500" />
+                                        <h4 className="text-xs font-black uppercase tracking-widest">Velocity</h4>
+                                        <p className="text-[10px] text-muted-foreground font-medium">Fast iterations without compromising reliability.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="space-y-6 text-muted-foreground font-medium leading-relaxed">
                                 <p>
-                                    I’m a developer who thrives at the intersection of design and engineering. My journey over the past 2.5 years has been focused on creating seamless user journeys using modern tech stacks. I specialize in turning architectural puzzles into clean, maintainable code.
+                                    I bridge the gap between design vision and technical feasibility. Over the past 2.5 years,
+                                    I've evolved from a curious learner to a detail-obsessed engineer who understands
+                                    that the best software is often what the user doesn't notice—the speed, the flow,
+                                    and the intuitive logic.
                                 </p>
                                 <p>
-                                    Recently, I’ve been crafting a sophisticated resume builder that leverages intricate animations and precise CSS to deliver a premium user experience. I’m also architecting a stock trade analysis platform, where I focus on translating complex data into intuitive, high-performance dashboards.
-                                </p>
-                                <p>
-                                    My approach is simple: build fast, stay efficient, and never compromise on the user experience. Whether it's optimizing a React render cycle or designing a scalable API, I'm all about delivery-focused engineering.
+                                    Whether it's architecting a stock analytics engine or an AI-driven interface,
+                                    my goal is always the same: Build something that feels as good as it works.
                                 </p>
                             </div>
                         </CardContent>
                     </Card>
                 </motion.div>
 
-                {/* Right Side: Skills */}
-                <motion.div variants={fadeInUp} className="lg:col-span-5 space-y-6">
-                    <h3 className="text-2xl font-bold flex items-center gap-2 px-2">
-                        <Terminal className="text-blue-400" /> Tech Stack
-                    </h3>
-                    <div className="grid gap-4">
+                {/* Tech Stack - Dash Style */}
+                <motion.div variants={fadeInUp} className="lg:col-span-12 space-y-8 pt-12">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <h3 className="text-4xl font-black tracking-tighter flex items-center gap-4">
+                            Technical Dominance
+                            <Sparkles className="text-blue-500" />
+                        </h3>
+                        <p className="text-muted-foreground font-bold text-sm tracking-widest uppercase">Expertise Mapping</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {skills.map((category, idx) => (
-                            <Card key={idx} className="border-border bg-card/50 backdrop-blur-md hover:bg-muted/40 transition-colors shadow-sm">
-                                <CardContent className="p-5">
-                                    <div className="flex items-center justify-between mb-3">
-                                        <h4 className="font-bold flex items-center gap-2">
-                                            {category.name}
-                                        </h4>
-                                        <div className="flex gap-1">
-                                            {category.icons.map((Icon, i) => <Icon key={i} size={16} className="text-muted-foreground" />)}
+                            <motion.div
+                                key={idx}
+                                whileHover={{ y: -10 }}
+                                className="group"
+                            >
+                                <Card className="h-full border-border bg-card/40 backdrop-blur-md rounded-[2rem] overflow-hidden transition-all duration-500 group-hover:border-blue-500/30 group-hover:shadow-[0_0_40px_-15px_rgba(59,130,246,0.3)]">
+                                    <CardContent className="p-8 space-y-6">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex -space-x-2">
+                                                {category.icons.map((Icon, i) => (
+                                                    <div key={i} className="p-2 rounded-full bg-background border border-border text-blue-500">
+                                                        <Icon size={16} />
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="flex flex-wrap gap-2">
-                                        {category.items.map((item, i) => (
-                                            <span key={i} className="px-3 py-1 text-xs font-medium bg-muted/40 rounded-md border border-border">
-                                                {item}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                            </Card>
+
+                                        <div className="space-y-2">
+                                            <h4 className="text-xl font-black tracking-tight">{category.name}</h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {category.items.map((item, i) => (
+                                                    <span key={i} className="px-3 py-1 text-[10px] font-black uppercase tracking-wider bg-muted/50 border border-border/50 rounded-lg text-muted-foreground group-hover:text-foreground transition-colors">
+                                                        {item}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                    <div className={`absolute bottom-0 left-0 h-1 w-full bg-linear-to-r ${category.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
+                                </Card>
+                            </motion.div>
                         ))}
                     </div>
                 </motion.div>
             </div>
 
-            {/* Social Links */}
-            <motion.div variants={fadeInUp} className="space-y-8 text-center pt-8">
-                <h3 className="text-2xl font-bold">Connect With Me</h3>
-                <div className="flex flex-wrap justify-center gap-4">
+            {/* Social Signal Section */}
+            <motion.div variants={fadeInUp} className="pt-24 space-y-12">
+                <div className="text-center space-y-4">
+                    <h3 className="text-4xl md:text-5xl font-black tracking-tighter">Digital Nexus</h3>
+                    <p className="text-muted-foreground font-medium text-lg">Cross-platform connectivity for collaborative ventures.</p>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 px-6">
                     {[
-                        { name: "GitHub", icon: BrandGithub, color: "hover:text-foreground hover:bg-foreground/5" },
-                        { name: "LinkedIn", icon: BrandLinkedin, color: "hover:text-blue-600 hover:bg-blue-600/5" },
-                        { name: "Telegram", icon: BrandTelegram, color: "hover:text-sky-500 hover:bg-sky-500/5" },
-                        { name: "Resume", icon: FileDescription, color: "hover:text-emerald-500 hover:bg-emerald-500/5" },
-                        { name: "Email", icon: Mail, color: "hover:text-red-500 hover:bg-red-500/5" },
-                        { name: "Medium", icon: BrandMedium, color: "hover:text-foreground hover:bg-foreground/5" },
+                        { name: "GitHub", icon: BrandGithub, color: "hover:border-white hover:bg-white hover:text-black" },
+                        { name: "LinkedIn", icon: BrandLinkedin, color: "hover:border-blue-600 hover:bg-blue-600 hover:text-white" },
+                        { name: "Telegram", icon: BrandTelegram, color: "hover:border-purple-600 hover:bg-purple-600 hover:text-white" },
+                        { name: "Curriculum", icon: FileDescription, color: "hover:border-emerald-600 hover:bg-emerald-600 hover:text-white" },
+                        { name: "Signal", icon: Mail, color: "hover:border-red-600 hover:bg-red-600 hover:text-white" },
+                        { name: "Insights", icon: BrandMedium, color: "hover:border-indigo-600 hover:bg-indigo-600 hover:text-white" },
                     ].map((link, i) => (
                         <motion.a
                             key={i}
                             href="#"
-                            whileHover={{ y: -5, scale: 1.05 }}
+                            whileHover={{ y: -8, scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className={`flex items-center gap-3 px-6 py-3 bg-muted/30 border border-border rounded-2xl backdrop-blur-md transition-all ${link.color} group shadow-sm`}
+                            className={`flex flex-col items-center justify-center gap-3 p-8 rounded-[2.5rem] bg-card border border-border backdrop-blur-md transition-all duration-300 ${link.color} shadow-lg`}
                         >
-                            <link.icon className="group-hover:scale-110 transition-transform" />
-                            <span className="font-semibold">{link.name}</span>
+                            <link.icon size={28} />
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em]">{link.name}</span>
                         </motion.a>
                     ))}
                 </div>
             </motion.div>
+
+            {/* Final Catchphrase */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="pt-32 text-center"
+            >
+                <a href="/projects" className="group inline-flex items-center gap-4 text-4xl md:text-6xl font-black tracking-tighter hover:text-blue-500 transition-colors">
+                    Explore my work
+                    <div className="p-4 rounded-full bg-blue-500 text-white group-hover:translate-x-4 transition-transform shadow-2xl shadow-blue-500/20">
+                        <ArrowUpRight size={40} />
+                    </div>
+                </a>
+            </motion.div>
         </motion.div>
     )
 }
+
 
