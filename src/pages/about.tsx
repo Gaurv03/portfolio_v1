@@ -39,6 +39,45 @@ const staggerContainer = {
     }
 }
 
+const linksArray = [
+    {
+        name: "GitHub",
+        icon: BrandGithub,
+        color: "hover:border-white hover:bg-white hover:text-black",
+        link: "https://github.com/Gaurv03"
+    },
+    {
+        name: "LinkedIn",
+        icon: BrandLinkedin,
+        color: "hover:border-blue-600 hover:bg-blue-600 hover:text-white",
+        link: "https://www.linkedin.com/in/gaurav-upadhyay-dev03/"
+    },
+    {
+        name: "Telegram",
+        icon: BrandTelegram,
+        color: "hover:border-purple-600 hover:bg-purple-600 hover:text-white",
+        link: "https://t.me/Gaurv_03"
+    },
+    {
+        name: "Resume",
+        icon: FileDescription,
+        color: "hover:border-emerald-600 hover:bg-emerald-600 hover:text-white",
+        link: "/resume.pdf"
+    },
+    {
+        name: "Email",
+        icon: Mail,
+        color: "hover:border-red-600 hover:bg-red-600 hover:text-white",
+        link: "mailto:[gauravupadhyay786.gu@gmail.com]"
+    },
+    {
+        name: "Medium",
+        icon: BrandMedium,
+        color: "hover:border-indigo-600 hover:bg-indigo-600 hover:text-white",
+        link: "https://medium.com/@gauravupadhyay786.gu"
+    },
+]
+
 export const About = () => {
     const skills = [
         {
@@ -252,17 +291,12 @@ export const About = () => {
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 px-6">
-                    {[
-                        { name: "GitHub", icon: BrandGithub, color: "hover:border-white hover:bg-white hover:text-black" },
-                        { name: "LinkedIn", icon: BrandLinkedin, color: "hover:border-blue-600 hover:bg-blue-600 hover:text-white" },
-                        { name: "Telegram", icon: BrandTelegram, color: "hover:border-purple-600 hover:bg-purple-600 hover:text-white" },
-                        { name: "Curriculum", icon: FileDescription, color: "hover:border-emerald-600 hover:bg-emerald-600 hover:text-white" },
-                        { name: "Signal", icon: Mail, color: "hover:border-red-600 hover:bg-red-600 hover:text-white" },
-                        { name: "Insights", icon: BrandMedium, color: "hover:border-indigo-600 hover:bg-indigo-600 hover:text-white" },
-                    ].map((link, i) => (
+                    {linksArray.map((link, i) => (
                         <motion.a
                             key={i}
-                            href="#"
+                            href={link.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             whileHover={{ y: -8, scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className={`flex flex-col items-center justify-center gap-3 p-8 rounded-[2.5rem] bg-card border border-border backdrop-blur-md transition-all duration-300 ${link.color} shadow-lg`}

@@ -2,7 +2,6 @@ import { NavLink } from "react-router"
 import { ModeToggle } from "./mode-toggle"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
-import { Code2 } from "lucide-react"
 
 export const Navbar = () => {
     const [scrolled, setScrolled] = useState(false)
@@ -41,9 +40,7 @@ export const Navbar = () => {
                         className="relative flex items-center justify-center"
                     >
                         <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-blue-500 rounded-lg blur-md opacity-20 group-hover:opacity-40 transition-opacity" />
-                        <div className="relative bg-primary p-1.5 rounded-lg border border-border">
-                            <Code2 size={22} className="text-primary-foreground" />
-                        </div>
+                        <img src="/logo.png" alt="Logo" className="size-10" />
                     </motion.div>
                 </NavLink>
 

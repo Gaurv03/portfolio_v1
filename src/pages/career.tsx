@@ -6,7 +6,7 @@ import {
     ChevronRight,
     Code2,
     Terminal,
-    Sparkles,
+    // Sparkles,
     BaggageClaim,
     ArrowUpRight
 } from "lucide-react"
@@ -59,21 +59,21 @@ const Career = () => {
             color: "purple",
             icon: Terminal
         },
-        {
-            company: "Capistech IT Solutions",
-            role: "Graduate Intern",
-            period: "May 2022 — July 2022",
-            location: "Jodhpur, Rajasthan, India",
-            description: "Fast-tracked learning process while contributing to internal tooling and documentation. Assisted senior devs in debugging and feature rollouts.",
-            achievements: [
-                "Contributed to 10+ open-source internal widgets",
-                "Automated weekly reporting using Python scripts",
-                "Recognized as 'Rookie of the Quarter'"
-            ],
-            tech: ["JavaScript", "React.js", "MUI", "Tailwind CSS"],
-            color: "emerald",
-            icon: Sparkles
-        }
+        // {
+        //     company: "Capistech IT Solutions",
+        //     role: "Graduate Intern",
+        //     period: "May 2022 — July 2022",
+        //     location: "Jodhpur, Rajasthan, India",
+        //     description: "Fast-tracked learning process while contributing to internal tooling and documentation. Assisted senior devs in debugging and feature rollouts.",
+        //     achievements: [
+        //         "Contributed to 10+ open-source internal widgets",
+        //         "Automated weekly reporting using Python scripts",
+        //         "Recognized as 'Rookie of the Quarter'"
+        //     ],
+        //     tech: ["JavaScript", "React.js", "MUI", "Tailwind CSS"],
+        //     color: "emerald",
+        //     icon: Sparkles
+        // }
     ]
 
     return (
