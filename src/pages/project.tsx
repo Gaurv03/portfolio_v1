@@ -5,9 +5,7 @@ import {
     Layout,
     Server,
     ExternalLink,
-    ChevronRight,
     Rocket,
-    Terminal,
     Eye
 } from "lucide-react"
 import {
@@ -28,65 +26,65 @@ interface Project {
 const projects: Project[] = [
     {
         id: 1,
-        title: "AI Resume Architect",
-        description: "A high-performance resume builder featuring real-time collaborative editing, PDF export, and AI-powered content suggestions.",
+        title: "Alphatopia – Trading Analysis Platform",
+        description:
+            "A data-intensive stock market analytics dashboard for visualizing large trading datasets using charts, filters, and insights, optimized for high performance and smooth rendering.",
         category: "Fullstack",
-        tech: ["React", "Node.js", "PostgreSQL", "Framer Motion", "Tailwind"],
-        image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop",
+        tech: ["React", "Node.js", "JavaScript", "Charts", "Caching", "Memoization"],
+        image:
+            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
         github: "#",
-        demo: "#"
+        demo: "#",
     },
     {
         id: 2,
-        title: "QuantTrade Analytics",
-        description: "Real-time stock analysis dashboard with complex data visualizations, technical indicators, and automated trade logging.",
-        category: "Fullstack",
-        tech: ["Next.js", "Express", "MongoDB", "Recharts", "TypeScript"],
-        image: "https://images.unsplash.com/photo-1611974717483-9b0577ae5293?q=80&w=800&auto=format&fit=crop",
+        title: "Amora Dashboard – Analytics Platform",
+        description:
+            "An admin analytics dashboard to monitor user activity, engagement metrics, and reports with clean UI, real-time updates, and scalable state management.",
+        category: "Frontend",
+        tech: ["React", "Tailwind CSS", "Firebase", "JavaScript"],
+        image:
+            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
         github: "#",
-        demo: "#"
+        demo: "#",
     },
     {
         id: 3,
-        title: "Nexus E-Commerce",
-        description: "A premium shopping experience with optimistic UI updates, multi-step checkout, and dynamic product filtering.",
-        category: "Frontend",
-        tech: ["React", "Redux Toolkit", "Stripe API", "Tailwind CSS"],
-        image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=800&auto=format&fit=crop",
+        title: "HRX Brand Platform",
+        description:
+            "A production-grade frontend and backend contribution for a major Indian brand, focused on improving UI responsiveness and reducing page load times.",
+        category: "Fullstack",
+        tech: ["React", "Node.js", "JavaScript", "Performance Optimization"],
+        image:
+            "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop",
         github: "#",
-        demo: "#"
+        demo: "#",
     },
     {
         id: 4,
-        title: "DevStream Social",
-        description: "Social platform for developers featuring live code sharing, markdown support, and real-time nested commenting.",
+        title: "NHRDN – Member Management System",
+        description:
+            "A large-scale member management platform with secure data handling, role-based access control, and performance-focused architecture.",
         category: "Fullstack",
-        tech: ["Next.js", "Socket.io", "Prisma", "AWS S3", "Docker"],
-        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
+        tech: ["React", "Node.js", "MongoDB", "RBAC", "REST APIs"],
+        image:
+            "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop",
         github: "#",
-        demo: "#"
+        demo: "#",
     },
     {
         id: 5,
-        title: "Motion UX System",
-        description: "A comprehensive design system library focused on micro-interactions and smooth layout transitions.",
+        title: "CaregiverSaathi – Support Platform",
+        description:
+            "A caregiver support platform focused on accessibility, intuitive user experience, and streamlined admin workflows for users and administrators.",
         category: "Frontend",
-        tech: ["React", "TypeScript", "Framer Motion", "Storybook"],
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop",
+        tech: ["React", "JavaScript", "Accessibility", "UI/UX"],
+        image:
+            "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop",
         github: "#",
-        demo: "#"
+        demo: "#",
     },
-    {
-        id: 6,
-        title: "TaskFlow Pro",
-        description: "Enterprise project management tool with Kanban boards, Gantt charts, and automated team notifications.",
-        category: "Fullstack",
-        tech: ["Node.js", "React", "Sequelize", "Jenkins", "PostgreSQL"],
-        image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=800&auto=format&fit=crop",
-        github: "#",
-        demo: "#"
-    }
-]
+];
 
 const fadeInUp = {
     initial: { y: 20, opacity: 0 },
@@ -103,7 +101,7 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
         transition={{ delay: index * 0.05, duration: 0.4 }}
         className="group relative"
     >
-        <Card className="h-full bg-card/20 border-border/50 backdrop-blur-xl overflow-hidden hover:border-blue-500/30 transition-all duration-500 rounded-[2rem]">
+        <Card className="h-full bg-card/20 border-border/50 backdrop-blur-xl overflow-hidden hover:border-blue-500/30 transition-all duration-500 rounded-[2rem] py-0">
             {/* Image Preview with sophisticated overlay */}
             <div className="relative aspect-16/10 overflow-hidden">
                 <img
@@ -161,14 +159,6 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
                             </span>
                         ))}
                     </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-border/50 flex items-center justify-between">
-                    <button className="text-[10px] items-center gap-2 font-black uppercase tracking-[0.2em] text-blue-500 hover:text-blue-400 transition-all flex group/btn">
-                        Explore Case Study
-                        <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
-                    <Terminal size={14} className="text-muted-foreground/30" />
                 </div>
             </CardContent>
 
