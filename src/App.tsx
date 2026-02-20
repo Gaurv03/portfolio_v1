@@ -5,41 +5,45 @@ import { About } from './pages/about'
 import Project from './pages/project'
 import Contact from './pages/contact'
 import Career from './pages/career'
+import ScrollToTop from './components/scroll-to-top'
 
 function App() {
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <Layout>
-            <About />
-          </Layout>
-        } />
-      <Route
-        path="/career"
-        element={
-          <Layout>
-            <Career />
-          </Layout>
-        } />
-      <Route
-        path="/projects"
-        element={
-          <Layout>
-            <Project />
-          </Layout>
-        } />
-      <Route
-        path="/contact"
-        element={
-          <Layout>
-            <Contact />
-          </Layout>
-        } />
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <About />
+            </Layout>
+          } />
+        <Route
+          path="/career"
+          element={
+            <Layout>
+              <Career />
+            </Layout>
+          } />
+        <Route
+          path="/projects"
+          element={
+            <Layout>
+              <Project />
+            </Layout>
+          } />
+        <Route
+          path="/contact"
+          element={
+            <Layout>
+              <Contact />
+            </Layout>
+          } />
 
-    </Routes>
+      </Routes>
+    </>
   )
 }
 

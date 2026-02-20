@@ -2,18 +2,14 @@ import { motion } from "framer-motion"
 import {
     ChevronUp,
     Code2,
-    Github,
-    Linkedin,
-    Twitter,
-    Mail,
     ExternalLink
 } from "lucide-react"
 import { NavLink } from "react-router"
+import { BrandGithub, BrandInstagram, BrandLinkedin, BrandTwitter } from "tabler-icons-react"
+
+import { scrollToTop } from "../lib/utils"
 
 export const Footer = () => {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" })
-    }
 
     const navLinks = [
         { name: "About", path: "/" },
@@ -23,10 +19,26 @@ export const Footer = () => {
     ]
 
     const socialLinks = [
-        { icon: Github, href: "#", label: "GitHub" },
-        { icon: Linkedin, href: "#", label: "LinkedIn" },
-        { icon: Twitter, href: "#", label: "Twitter" },
-        { icon: Mail, href: "mailto:gauravupadhyay786.gu@gmail.com", label: "Email" },
+        {
+            icon: BrandLinkedin,
+            href: "https://www.linkedin.com/in/gaurav-upadhyay-dev03/",
+            label: "LinkedIn"
+        },
+        {
+            icon: BrandGithub,
+            href: "https://github.com/Gaurv03",
+            label: "GitHub"
+        },
+        {
+            icon: BrandTwitter,
+            href: "https://x.com/GaurvUpadhyay",
+            label: "Twitter"
+        },
+        {
+            icon: BrandInstagram,
+            href: "https://instagram.com/_.gaurv._",
+            label: "Instagram"
+        },
     ]
 
     return (
@@ -45,7 +57,7 @@ export const Footer = () => {
             </div>
 
             <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 mb-16">
                     {/* Branding & Bio */}
                     <div className="md:col-span-5 space-y-6">
                         <div className="flex items-center gap-3">
@@ -56,7 +68,7 @@ export const Footer = () => {
                                 GAURAV<span className="text-blue-500">.</span>DEV
                             </span>
                         </div>
-                        <p className="text-muted-foreground font-medium leading-relaxed max-w-sm">
+                        <p className="text-muted-foreground text-sm md:text-base font-medium leading-relaxed max-w-sm">
                             Building pixel-perfect user experiences and scalable full-stack architectures.
                             Focused on performance, accessibility, and modern aesthetics.
                         </p>
@@ -64,15 +76,16 @@ export const Footer = () => {
 
                     {/* Quick Links */}
                     <div className="md:col-span-3 space-y-6">
-                        <h4 className="text-xs font-black uppercase tracking-widest text-primary/70">Navigation</h4>
-                        <ul className="space-y-4">
+                        <h4 className="text-[11px] font-black uppercase tracking-widest text-primary/70">Navigation</h4>
+                        <ul className="space-y-3 md:space-y-4">
                             {navLinks.map((link) => (
                                 <li key={link.path}>
                                     <NavLink
                                         to={link.path}
-                                        className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors group"
+                                        onClick={scrollToTop}
+                                        className="text-[11px] font-black uppercase tracking-widest text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors group"
                                     >
-                                        <ChevronUp size={14} className="rotate-90 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                                        <ChevronUp size={12} className="rotate-90 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                                         {link.name}
                                     </NavLink>
                                 </li>
@@ -82,22 +95,24 @@ export const Footer = () => {
 
                     {/* Socials & Contact */}
                     <div className="md:col-span-4 space-y-6">
-                        <h4 className="text-xs font-black uppercase tracking-widest text-primary/70">Social Connectivity</h4>
+                        <h4 className="text-[11px] font-black uppercase tracking-widest text-primary/70">Social Connectivity</h4>
                         <div className="flex flex-wrap gap-3">
                             {socialLinks.map((social) => (
                                 <motion.a
                                     key={social.label}
                                     href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     whileHover={{ y: -4, scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     className="p-3 rounded-2xl bg-muted/50 border border-border hover:bg-muted transition-colors group"
                                     aria-label={social.label}
                                 >
-                                    <social.icon size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                                    <social.icon size={18} className="text-muted-foreground group-hover:text-primary transition-colors" />
                                 </motion.a>
                             ))}
                         </div>
-                        <div className="pt-4">
+                        <div className="pt-2">
                             <a
                                 href="mailto:gauravupadhyay786.gu@gmail.com"
                                 className="inline-flex items-center gap-2 text-sm font-bold text-muted-foreground hover:text-primary transition-colors"
@@ -109,13 +124,13 @@ export const Footer = () => {
                 </div>
 
                 <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-sm text-muted-foreground font-medium text-center md:text-left">
+                    <p className="text-xs md:text-sm text-muted-foreground font-medium text-center md:text-left">
                         © {new Date().getFullYear()} Gaurav Upadhyay. Built with React & Framer Motion.
                     </p>
                     <div className="flex items-center gap-6">
                         <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                            <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Available for new projects</span>
+                            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                            <span className="text-[10px] md:text-xs font-bold text-muted-foreground uppercase tracking-wider">Available for new projects</span>
                         </div>
                     </div>
                 </div>

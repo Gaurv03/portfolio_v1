@@ -12,7 +12,7 @@ import {
     BrandGithub,
     BrandLinkedin,
     BrandTwitter,
-    BrandInstagram
+    BrandInstagram,
 } from "tabler-icons-react"
 import { useState } from "react"
 
@@ -45,10 +45,10 @@ const Contact = () => {
             initial="initial"
             animate="animate"
             variants={staggerContainer}
-            className="space-y-24 pb-12 relative"
+            className="md:space-y-20 space-y-12 md:pb-12 pb-6 relative"
         >
             {/* Hero Section */}
-            <div className="flex flex-col items-center text-center space-y-8 mb-24 px-6">
+            <div className="flex flex-col items-center text-center md:space-y-8 space-y-4 md:mb-24 mb-12 md:px-6">
                 <motion.div
                     variants={fadeInUp}
                     className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-black uppercase tracking-[0.2em] text-blue-500 dark:text-blue-400 backdrop-blur-sm"
@@ -59,7 +59,7 @@ const Contact = () => {
 
                 <motion.h1
                     variants={fadeInUp}
-                    className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-foreground"
+                    className="text-3xl md:text-5xl font-black tracking-tighter leading-[0.9] text-foreground"
                 >
                     Ready to make <br />
                     <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 via-purple-500 to-pink-500">
@@ -69,23 +69,23 @@ const Contact = () => {
 
                 <motion.p
                     variants={fadeInUp}
-                    className="text-muted-foreground text-xl max-w-2xl font-medium leading-relaxed"
+                    className="text-muted-foreground md:text-xl text-lg max-w-2xl font-medium leading-relaxed"
                 >
                     Whether you're starting a new brand or need to scale your existing architecture,
                     I'm here to build the bridge between your vision and reality.
                 </motion.p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch md:px-6">
                 {/* Left Column: Direct Action & Socials */}
-                <div className="lg:col-span-5 flex flex-col justify-between space-y-12">
+                <div className="lg:col-span-5 flex flex-col justify-between md:space-y-12 space-y-6">
                     <div className="space-y-8">
                         <motion.div variants={fadeInUp} className="space-y-4">
                             <h3 className="text-sm font-black uppercase tracking-widest text-muted-foreground flex items-center gap-4">
                                 <Sparkles size={16} className="text-blue-500" />
                                 The Direct Route
                             </h3>
-                            <p className="text-2xl font-bold leading-tight">
+                            <p className="md:text-2xl text-xl font-bold leading-tight">
                                 Skip the formalities and jump straight into my orbit.
                             </p>
                         </motion.div>
@@ -95,7 +95,7 @@ const Contact = () => {
                                 href="mailto:gauravupadhyay786.gu@gmail.com"
                                 variants={fadeInUp}
                                 whileHover={{ scale: 1.02, x: 10 }}
-                                className="group flex items-center justify-between p-6 rounded-3xl bg-card border border-border hover:border-blue-500/50 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.2)] transition-all"
+                                className="group flex items-center justify-between p-6 rounded-2xl bg-card border border-border hover:border-blue-500/50 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.2)] transition-all"
                             >
                                 <div className="flex items-center gap-5">
                                     <div className="p-4 rounded-2xl bg-blue-500/10 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
@@ -110,10 +110,12 @@ const Contact = () => {
                             </motion.a>
 
                             <motion.a
-                                href="#"
+                                href="https://t.me/Gaurv_03"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 variants={fadeInUp}
                                 whileHover={{ scale: 1.02, x: 10 }}
-                                className="group flex items-center justify-between p-6 rounded-3xl bg-card border border-border hover:border-purple-500/50 hover:shadow-[0_0_30px_-10px_rgba(168,85,247,0.2)] transition-all"
+                                className="group flex items-center justify-between p-6 rounded-2xl bg-card border border-border hover:border-purple-500/50 hover:shadow-[0_0_30px_-10px_rgba(168,85,247,0.2)] transition-all"
                             >
                                 <div className="flex items-center gap-5">
                                     <div className="p-4 rounded-2xl bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-colors">
@@ -121,7 +123,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <p className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-1">Chat</p>
-                                        <p className="text-lg font-bold">Telegram / WhatsApp</p>
+                                        <p className="text-lg font-bold">Telegram</p>
                                     </div>
                                 </div>
                                 <ArrowRight size={20} className="text-muted-foreground group-hover:text-purple-500 transition-colors" />
@@ -129,18 +131,36 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    <div className="space-y-6 pt-8 border-t border-border">
-                        <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">Digital Presence</h4>
-                        <div className="flex flex-wrap gap-3">
+                    <div className="space-y-6 md:pt-8 pt-4 border-t border-border">
+                        <h4 className="text-[10px] md:text-left text-center font-black uppercase tracking-[0.3em] text-muted-foreground">Digital Presence</h4>
+                        <div className="flex flex-wrap gap-3 md:justify-start justify-center">
                             {[
-                                { icon: BrandLinkedin, href: "#", color: "hover:bg-blue-600" },
-                                { icon: BrandGithub, href: "#", color: "hover:bg-neutral-800" },
-                                { icon: BrandTwitter, href: "#", color: "hover:bg-sky-500" },
-                                { icon: BrandInstagram, href: "#", color: "hover:bg-pink-600" },
+                                {
+                                    icon: BrandLinkedin,
+                                    href: "https://www.linkedin.com/in/gaurav-upadhyay-dev03/",
+                                    color: "hover:bg-blue-600"
+                                },
+                                {
+                                    icon: BrandGithub,
+                                    href: "https://github.com/Gaurv03",
+                                    color: "hover:bg-neutral-800"
+                                },
+                                {
+                                    icon: BrandTwitter,
+                                    href: "https://x.com/GaurvUpadhyay",
+                                    color: "hover:bg-sky-500"
+                                },
+                                {
+                                    icon: BrandInstagram,
+                                    href: "https://instagram.com/_.gaurv._",
+                                    color: "hover:bg-pink-600"
+                                },
                             ].map((social, i) => (
                                 <motion.a
                                     key={i}
                                     href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     variants={fadeInUp}
                                     whileHover={{ y: -5, scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
@@ -158,11 +178,11 @@ const Contact = () => {
                     variants={fadeInUp}
                     className="lg:col-span-7"
                 >
-                    <Card className="h-full border-none bg-linear-to-br from-card to-card/50 backdrop-blur-xl rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-500/5 border border-white/5">
-                        <CardContent className="p-10 md:p-16 space-y-12">
+                    <Card className="h-full border-none bg-linear-to-br from-card to-card/50 backdrop-blur-xl rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/5 border border-white/5 p-0">
+                        <CardContent className="p-6 md:p-10 space-y-12">
                             <div className="space-y-2">
-                                <h2 className="text-4xl font-black tracking-tight">Fuel the vision</h2>
-                                <p className="text-muted-foreground font-medium text-lg">Send over the briefing and let's get moving.</p>
+                                <h2 className="text-2xl md:text-4xl font-black tracking-tight">Fuel the vision</h2>
+                                <p className="text-muted-foreground font-medium md:text-lg text-base">Send over the briefing and let's get moving.</p>
                             </div>
 
                             <form onSubmit={handleSubmit} className="space-y-10">
@@ -173,7 +193,7 @@ const Contact = () => {
                                             required
                                             onFocus={() => setFocusedField('name')}
                                             onBlur={() => setFocusedField(null)}
-                                            className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold text-xl peer"
+                                            className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"
                                             placeholder=" "
                                         />
                                         <label className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}>
@@ -186,7 +206,7 @@ const Contact = () => {
                                             required
                                             onFocus={() => setFocusedField('email')}
                                             onBlur={() => setFocusedField(null)}
-                                            className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold text-xl peer"
+                                            className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"
                                             placeholder=" "
                                         />
                                         <label className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}>
@@ -201,7 +221,7 @@ const Contact = () => {
                                         required
                                         onFocus={() => setFocusedField('subject')}
                                         onBlur={() => setFocusedField(null)}
-                                        className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold text-xl peer"
+                                        className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"
                                         placeholder=" "
                                     />
                                     <label className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}>
@@ -210,13 +230,13 @@ const Contact = () => {
                                 </div>
 
                                 <div className="relative">
-                                    <textarea
-                                        rows={3}
+                                    <input
+                                        type="text"
                                         required
                                         onFocus={() => setFocusedField('message')}
                                         onBlur={() => setFocusedField(null)}
-                                        className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold text-xl resize-none peer"
-                                        placeholder=" "
+                                        className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"
+                                        placeholder=""
                                     />
                                     <label className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}>
                                         Project Briefing
@@ -228,7 +248,7 @@ const Contact = () => {
                                     disabled={status === "success"}
                                     whileHover={{ scale: 1.01 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="group relative w-full h-20 overflow-hidden rounded-[1.5rem] bg-foreground text-background font-black text-xl transition-all shadow-xl shadow-foreground/10"
+                                    className="group relative w-full md:h-16 h-12 overflow-hidden rounded-2xl bg-foreground text-background font-black md:text-xl text-base transition-all shadow-xl shadow-foreground/10"
                                 >
                                     <div className="absolute inset-0 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     <div className="relative flex items-center justify-center gap-4">

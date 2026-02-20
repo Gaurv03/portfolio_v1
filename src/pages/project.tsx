@@ -11,6 +11,7 @@ import {
 import {
     BrandGithub
 } from "tabler-icons-react"
+import { Link } from "react-router"
 
 interface Project {
     id: number
@@ -101,7 +102,7 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
         transition={{ delay: index * 0.05, duration: 0.4 }}
         className="group relative"
     >
-        <Card className="h-full bg-card/20 border-border/50 backdrop-blur-xl overflow-hidden hover:border-blue-500/30 transition-all duration-500 rounded-[2rem] py-0">
+        <Card className="h-full bg-card/20 border-border/50 backdrop-blur-xl overflow-hidden hover:border-blue-500/30 transition-all duration-500 rounded-2xl py-0">
             {/* Image Preview with sophisticated overlay */}
             <div className="relative aspect-16/10 overflow-hidden">
                 <img
@@ -142,19 +143,19 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
                 </div>
             </div>
 
-            <CardContent className="p-8 flex flex-col h-[calc(100%-aspect-16/10)]">
+            <CardContent className="p-5 md:p-8 flex flex-col h-[calc(100%-aspect-16/10)]">
                 <div className="space-y-3 grow">
-                    <h3 className="text-2xl font-black tracking-tighter group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-xl md:text-2xl font-black tracking-tighter group-hover:text-blue-400 transition-colors">
                         {project.title}
                     </h3>
-                    <p className="text-base text-muted-foreground font-medium leading-relaxed line-clamp-2">
+                    <p className="text-sm md:text-base text-muted-foreground font-medium leading-relaxed line-clamp-3">
                         {project.description}
                     </p>
 
                     {/* Tech Stack Pills */}
                     <div className="flex flex-wrap gap-2 pt-2">
                         {project.tech.slice(0, 4).map((t, idx) => (
-                            <span key={idx} className="px-2.5 py-1 text-[10px] font-black uppercase bg-muted/50 border border-border/50 rounded-lg text-muted-foreground">
+                            <span key={idx} className="px-2 py-0.5 text-[10px] md:text-[11px] font-black uppercase bg-muted/50 border border-border/50 rounded-lg text-muted-foreground whitespace-nowrap">
                                 {t}
                             </span>
                         ))}
@@ -176,9 +177,9 @@ const Projects = () => {
     )
 
     return (
-        <div className="space-y-24 pb-12">
+        <div className="md:space-y-20 space-y-12">
             {/* Header Section */}
-            <div className="flex flex-col items-center text-center space-y-8 px-6">
+            <div className="flex flex-col items-center text-center md:space-y-8 space-y-4 md:px-6 px-3">
                 <motion.div
                     variants={fadeInUp}
                     initial="initial"
@@ -192,7 +193,7 @@ const Projects = () => {
                     variants={fadeInUp}
                     initial="initial"
                     animate="animate"
-                    className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.8] mb-4"
+                    className="text-3xl md:text-5xl font-black tracking-tighter leading-[0.8] mb-4"
                 >
                     Proof of <br />
                     <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 via-emerald-500 to-indigo-600">
@@ -204,7 +205,7 @@ const Projects = () => {
                     variants={fadeInUp}
                     initial="initial"
                     animate="animate"
-                    className="text-muted-foreground text-xl max-w-2xl font-medium leading-relaxed"
+                    className="text-muted-foreground md:text-xl text-lg max-w-2xl font-medium leading-relaxed"
                 >
                     A curated selection of engineering feats, where code meets creativity to solve
                     complex human problems at scale.
@@ -212,13 +213,13 @@ const Projects = () => {
             </div>
 
             {/* Advanced Filter Tabs */}
-            <div className="flex justify-center mb-16 px-6">
-                <div className="flex p-1.5 bg-card/50 backdrop-blur-2xl rounded-3xl border border-border/50 shadow-2xl">
+            <div className="flex justify-center md:mb-16 mb-10 px-4 md:px-6">
+                <div className="flex p-1 bg-card/50 backdrop-blur-2xl rounded-2xl border border-border/50 shadow-2xl overflow-x-auto no-scrollbar max-w-full">
                     {["All", "Fullstack", "Frontend"].map((f) => (
                         <button
                             key={f}
                             onClick={() => setFilter(f as any)}
-                            className={`relative px-8 py-3 text-xs font-black uppercase tracking-widest transition-all rounded-2xl ${filter === f ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                            className={`relative px-5 md:px-8 py-2 md:py-3 text-[11px] md:text-xs font-black uppercase tracking-widest transition-all rounded-xl whitespace-nowrap ${filter === f ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                                 }`}
                         >
                             <span className="relative z-10">{f}</span>
@@ -226,7 +227,7 @@ const Projects = () => {
                                 <motion.div
                                     layoutId="filter-active"
                                     className="absolute inset-0 bg-background border border-border shadow-lg"
-                                    style={{ borderRadius: '1rem' }}
+                                    style={{ borderRadius: '0.75rem' }}
                                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                                 />
                             )}
@@ -236,10 +237,10 @@ const Projects = () => {
             </div>
 
             {/* Dynamic Grid Layout */}
-            <div className="px-6">
+            <div className="px-0 sm:px-6">
                 <motion.div
                     layout
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10"
                 >
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project, idx) => (
@@ -258,17 +259,17 @@ const Projects = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="mt-32 text-center"
+                className="md:mt-20 mt-10 text-center"
             >
-                <a
-                    href="/contact"
-                    className="group inline-flex items-center gap-4 text-3xl md:text-5xl font-black tracking-tighter hover:text-blue-500 transition-colors"
+                <Link
+                    to="/contact"
+                    className="group inline-flex items-center gap-4 text-2xl md:text-5xl font-black tracking-tighter hover:text-blue-500 transition-colors"
                 >
                     Have a vision?
-                    <div className="p-4 rounded-full bg-blue-500 text-white group-hover:translate-x-4 transition-transform">
-                        <ExternalLink size={32} />
+                    <div className="md:p-4 p-2 rounded-full bg-blue-500 text-white group-hover:translate-x-4 transition-transform">
+                        <ExternalLink className="size-6 md:size-8" />
                     </div>
-                </a>
+                </Link>
             </motion.div>
         </div>
     )

@@ -24,6 +24,8 @@ import {
     FileDescription,
     Mail
 } from "tabler-icons-react"
+import { Link } from "react-router"
+import { scrollToTop } from "../lib/utils"
 
 const fadeInUp = {
     initial: { y: 20, opacity: 0 },
@@ -111,7 +113,7 @@ export const About = () => {
             initial="initial"
             animate="animate"
             variants={staggerContainer}
-            className="space-y-24 pb-12"
+            className="md:space-y-20 space-y-12"
         >
             {/* Hero Section - Bold & Immersive */}
             <section className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -159,16 +161,16 @@ export const About = () => {
                             <User size={12} fill="currentColor" /> Software Engineer
                         </motion.div>
 
-                        <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.8] text-foreground">
+                        <h1 className="md:text-5xl text-3xl font-black tracking-tighter text-foreground">
                             I'm <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 via-purple-500 to-indigo-600">Gaurav.</span>
                         </h1>
-                        <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-muted-foreground/80">
+                        <h2 className="md:text-3xl text-xl font-bold tracking-tight text-muted-foreground/80">
                             Translating complex logic <br className="hidden md:block" />
                             into <span className="text-foreground">Human-Centric</span> experiences.
                         </h2>
                     </div>
 
-                    <p className="text-xl leading-relaxed text-muted-foreground font-medium max-w-2xl mx-auto lg:mx-0">
+                    <p className="md:text-lg text-base leading-relaxed text-muted-foreground font-medium max-w-2xl mx-auto lg:mx-0">
                         Based in India 🇮🇳, I specialize in crafting high-performance full-stack architectures.
                         My focus is on speed, scalability, and that elusive 'premium feel' that sets
                         great software apart.
@@ -191,11 +193,11 @@ export const About = () => {
             </section>
 
             {/* Content Deck */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:pt-12">
                 {/* Philosophical Bio */}
                 <motion.div variants={fadeInUp} className="lg:col-span-12">
-                    <Card className="border-none bg-linear-to-br from-card to-card/50 backdrop-blur-xl rounded-[3rem] overflow-hidden shadow-2xl border border-white/5">
-                        <CardContent className="p-10 md:p-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <Card className="border-none bg-linear-to-br from-card to-card/50 backdrop-blur-xl rounded-2xl overflow-hidden shadow-2xl border border-white/5">
+                        <CardContent className="p-5 md:p-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                             <div className="space-y-8">
                                 <div className="space-y-4">
                                     <h3 className="text-3xl font-black tracking-tight flex items-center gap-4">
@@ -236,24 +238,24 @@ export const About = () => {
                 </motion.div>
 
                 {/* Tech Stack - Dash Style */}
-                <motion.div variants={fadeInUp} className="lg:col-span-12 space-y-8 pt-12">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <h3 className="text-4xl font-black tracking-tighter flex items-center gap-4">
+                <motion.div variants={fadeInUp} className="lg:col-span-12 md:space-y-8 space-y-4 md:pt-12">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between md:gap-4">
+                        <h3 className="md:text-4xl text-2xl font-black tracking-tighter flex items-center gap-4">
                             Technical Dominance
                             <Sparkles className="text-blue-500" />
                         </h3>
                         <p className="text-muted-foreground font-bold text-sm tracking-widest uppercase">Expertise Mapping</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 gap-4">
                         {skills.map((category, idx) => (
                             <motion.div
                                 key={idx}
                                 whileHover={{ y: -10 }}
                                 className="group"
                             >
-                                <Card className="h-full border-border bg-card/40 backdrop-blur-md rounded-[2rem] overflow-hidden transition-all duration-500 group-hover:border-blue-500/30 group-hover:shadow-[0_0_40px_-15px_rgba(59,130,246,0.3)]">
-                                    <CardContent className="p-8 space-y-6">
+                                <Card className="h-full border-border bg-card/40 backdrop-blur-md rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-blue-500/30 group-hover:shadow-[0_0_40px_-15px_rgba(59,130,246,0.3)]">
+                                    <CardContent className="md:p-8 p-4 space-y-6">
                                         <div className="flex items-center justify-between">
                                             <div className="flex -space-x-2">
                                                 {category.icons.map((Icon, i) => (
@@ -284,10 +286,10 @@ export const About = () => {
             </div>
 
             {/* Social Signal Section */}
-            <motion.div variants={fadeInUp} className="pt-24 space-y-12">
+            <motion.div variants={fadeInUp} className="space-y-5">
                 <div className="text-center space-y-4">
-                    <h3 className="text-4xl md:text-5xl font-black tracking-tighter">Digital Nexus</h3>
-                    <p className="text-muted-foreground font-medium text-lg">Cross-platform connectivity for collaborative ventures.</p>
+                    <h3 className="text-2xl md:text-4xl font-black tracking-tighter">Digital Nexus</h3>
+                    <p className="text-muted-foreground font-medium md:text-lg text-base">Cross-platform connectivity for collaborative ventures.</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 px-6">
@@ -313,14 +315,14 @@ export const About = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="pt-32 text-center"
+                className=" text-center"
             >
-                <a href="/projects" className="group inline-flex items-center gap-4 text-4xl md:text-6xl font-black tracking-tighter hover:text-blue-500 transition-colors">
+                <Link to="/projects" onClick={scrollToTop} className="group inline-flex items-center gap-4 md:text-4xl text-2xl font-black tracking-tighter hover:text-blue-500 transition-colors">
                     Explore my work
-                    <div className="p-4 rounded-full bg-blue-500 text-white group-hover:translate-x-4 transition-transform shadow-2xl shadow-blue-500/20">
-                        <ArrowUpRight size={40} />
+                    <div className="p-2 rounded-full bg-blue-500 text-white group-hover:translate-x-4 transition-transform shadow-2xl shadow-blue-500/20">
+                        <ArrowUpRight size={30} />
                     </div>
-                </a>
+                </Link>
             </motion.div>
         </motion.div>
     )

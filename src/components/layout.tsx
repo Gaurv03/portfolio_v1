@@ -77,7 +77,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.5, ease: "easeOut" }}
-                        className="grow w-full max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-20"
+                        className="grow w-full max-w-7xl mx-auto px-3 md:px-12 pt-28 md:pb-20"
                     >
                         {children}
                     </motion.main>

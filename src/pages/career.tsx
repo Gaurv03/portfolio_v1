@@ -77,7 +77,7 @@ const Career = () => {
     ]
 
     return (
-        <div className="space-y-24 pb-12">
+        <div className="md:space-y-20 space-y-12">
             {/* Header Section */}
             <div className="flex flex-col items-center text-center space-y-8">
                 <motion.div
@@ -91,7 +91,7 @@ const Career = () => {
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.8]"
+                    className="text-3xl md:text-5xl font-black tracking-tighter leading-[0.8]"
                 >
                     Career <br className="md:hidden" />
                     <span className="text-transparent bg-clip-text bg-linear-to-br from-blue-500 via-purple-500 to-pink-500">Timeline.</span>
@@ -101,16 +101,16 @@ const Career = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="flex flex-wrap justify-center gap-6"
+                    className="flex flex-wrap justify-center md:gap-6 gap-3"
                 >
                     <div className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-card/40 backdrop-blur-md border border-border shadow-sm">
-                        <span className="text-3xl font-black text-blue-500 tracking-tighter">2.5+</span>
+                        <span className="md:text-3xl text-xl font-black text-blue-500 tracking-tighter">2.5+</span>
                         <span className="text-[10px] uppercase font-black text-muted-foreground leading-none text-left tracking-widest">
                             Years of<br />Experience
                         </span>
                     </div>
                     <div className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-card/40 backdrop-blur-md border border-border shadow-sm">
-                        <span className="text-3xl font-black text-purple-500 tracking-tighter">3+</span>
+                        <span className="md:text-3xl text-xl font-black text-purple-500 tracking-tighter">3+</span>
                         <span className="text-[10px] uppercase font-black text-muted-foreground leading-none text-left tracking-widest">
                             Built<br />Solutions
                         </span>
@@ -123,7 +123,7 @@ const Career = () => {
                 initial="initial"
                 animate="animate"
                 variants={staggerContainer}
-                className="relative space-y-12"
+                className="relative md:space-y-12 space-y-6"
             >
                 {/* Vertical Line */}
                 <div className="absolute left-[21px] top-4 bottom-4 w-px bg-linear-to-b from-blue-500 via-purple-500 to-transparent hidden md:block" />
@@ -139,15 +139,15 @@ const Career = () => {
                             <exp.icon size={20} className={`text-${exp.color}-500`} />
                         </div>
 
-                        <Card className="border-border bg-card/50 backdrop-blur-md overflow-hidden hover:bg-card transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 rounded-[2rem]">
-                            <CardContent className="p-8 md:p-10">
-                                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+                        <Card className="border-border bg-card/50 backdrop-blur-md overflow-hidden hover:bg-card transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 rounded-2xl p-0">
+                            <CardContent className="p-4 md:p-6">
+                                <div className="flex flex-col lg:flex-row lg:items-center justify-between md:gap-6 gap-3 md:mb-8 mb-4">
                                     <div className="space-y-1">
-                                        <div className="flex items-center gap-2 text-primary font-black text-2xl uppercase tracking-tighter italic">
+                                        <div className="flex items-center gap-2 text-primary font-black md:text-2xl text-lg uppercase tracking-tighter italic">
                                             {exp.company}
                                             <ArrowUpRight size={18} className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                                         </div>
-                                        <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+                                        <h3 className="md:text-xl text-base font-bold text-foreground flex items-center gap-2">
                                             {exp.role}
                                             <span className="hidden md:inline w-8 h-px bg-border" />
                                         </h3>
@@ -164,14 +164,14 @@ const Career = () => {
 
                                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
                                     <div className="lg:col-span-7 space-y-6">
-                                        <p className="text-muted-foreground leading-relaxed font-medium text-lg">
+                                        <p className="text-muted-foreground leading-relaxed font-medium md:text-lg text-base">
                                             {exp.description}
                                         </p>
                                         <ul className="space-y-4">
                                             {exp.achievements.map((item, i) => (
                                                 <li key={i} className="flex items-start gap-4 group/item">
                                                     <div className="mt-2 h-1.5 w-1.5 rounded-full bg-primary shrink-0 group-hover/item:scale-150 transition-transform" />
-                                                    <span className="text-base font-semibold text-foreground/80 group-hover/item:text-foreground transition-colors leading-relaxed">
+                                                    <span className="md:text-base text-sm font-semibold text-foreground/80 group-hover/item:text-foreground transition-colors leading-relaxed">
                                                         {item}
                                                     </span>
                                                 </li>
@@ -202,10 +202,10 @@ const Career = () => {
             {/* Skill Connect Button */}
             <motion.div
                 variants={fadeInUp}
-                className="mt-20 text-center"
+                className="md:mt-20 text-center"
                 onClick={() => navigate("/projects")}
             >
-                <button className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-foreground text-background font-black transition-all hover:scale-105 active:scale-95 shadow-xl">
+                <button className="inline-flex items-center gap-2 md:px-8 px-4 md:py-4 py-2 rounded-2xl bg-foreground text-background font-black transition-all hover:scale-105 active:scale-95 shadow-xl">
                     View Project Contributions <ChevronRight size={20} />
                 </button>
             </motion.div>
