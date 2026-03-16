@@ -49,20 +49,20 @@ export const Navbar = () => {
                     initial={{ y: -100, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: "circOut" }}
-                    className={`flex items-center justify-between md:justify-start w-full md:w-auto gap-1 md:gap-2 px-4 md:px-3 py-3 md:py-2 rounded-none md:rounded-full border-b md:border transition-all duration-500 pointer-events-auto ${scrolled || isOpen
+                    className={`flex items-center justify-between md:justify-start w-full md:w-auto gap-1 md:gap-2 px-4 md:px-6 py-3 md:py-2 rounded-none md:rounded-full border-b md:border transition-all duration-500 pointer-events-auto ${scrolled || isOpen
                         ? "bg-background/80 backdrop-blur-xl border-border shadow-[0_8px_32px_rgba(0,0,0,0.1)]"
                         : "bg-card/40 backdrop-blur-md border-border"
                         }`}
                 >
                     {/* Logo Section */}
-                    <NavLink to="/" onClick={() => { scrollToTop(); setIsOpen(false); }} className="flex items-center px-1 md:px-2 py-1">
+                    <NavLink to="/" onClick={() => { scrollToTop(); setIsOpen(false); }} className="flex items-center">
                         <motion.div
                             whileHover={{ scale: 1.1, rotate: 5 }}
                             whileTap={{ scale: 0.9 }}
                             className="relative flex items-center justify-center"
                         >
                             <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-blue-500 rounded-lg blur-md opacity-20 group-hover:opacity-40 transition-opacity" />
-                            <img src="/logo.png" alt="Logo" className="size-8 md:size-9" />
+                            <img src="/logo.png" alt="Logo" className="size-10 md:size-10" />
                         </motion.div>
                     </NavLink>
 

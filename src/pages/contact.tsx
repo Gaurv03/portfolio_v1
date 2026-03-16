@@ -31,13 +31,25 @@ const staggerContainer = {
 }
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+    })
     const [status, setStatus] = useState<"idle" | "success">("idle")
     const [_focusedField, setFocusedField] = useState<string | null>(null)
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         setStatus("success")
-        setTimeout(() => setStatus("idle"), 4000)
+        setTimeout(() => setStatus("idle"), 1000)
+        setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+        })
     }
 
     return (
@@ -191,6 +203,8 @@ const Contact = () => {
                                         <input
                                             type="text"
                                             required
+                                            value={formData.name}
+                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                             onFocus={() => setFocusedField('name')}
                                             onBlur={() => setFocusedField(null)}
                                             className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"
@@ -204,6 +218,8 @@ const Contact = () => {
                                         <input
                                             type="email"
                                             required
+                                            value={formData.email}
+                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                             onFocus={() => setFocusedField('email')}
                                             onBlur={() => setFocusedField(null)}
                                             className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"
@@ -219,6 +235,8 @@ const Contact = () => {
                                     <input
                                         type="text"
                                         required
+                                        value={formData.subject}
+                                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                                         onFocus={() => setFocusedField('subject')}
                                         onBlur={() => setFocusedField(null)}
                                         className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"
@@ -233,6 +251,8 @@ const Contact = () => {
                                     <input
                                         type="text"
                                         required
+                                        value={formData.message}
+                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                         onFocus={() => setFocusedField('message')}
                                         onBlur={() => setFocusedField(null)}
                                         className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"

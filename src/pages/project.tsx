@@ -5,12 +5,8 @@ import {
     Layout,
     Server,
     ExternalLink,
-    Rocket,
-    Eye
+    Rocket
 } from "lucide-react"
-import {
-    BrandGithub
-} from "tabler-icons-react"
 import { Link } from "react-router"
 
 interface Project {
@@ -18,9 +14,7 @@ interface Project {
     title: string
     description: string
     category: "Fullstack" | "Frontend"
-    tech: string[]
     image: string
-    github?: string
     demo?: string
 }
 
@@ -29,61 +23,81 @@ const projects: Project[] = [
         id: 1,
         title: "Alphatopia – Trading Analysis Platform",
         description:
-            "A data-intensive stock market analytics dashboard for visualizing large trading datasets using charts, filters, and insights, optimized for high performance and smooth rendering.",
-        category: "Fullstack",
-        tech: ["React", "Node.js", "JavaScript", "Charts", "Caching", "Memoization"],
+            "Built an interactive stock market analytics dashboard using React.js and Node.js to visualize large volumes of trading and market data through charts, filters, and insights. Enhanced data interpretation with AI-assisted processing and analysis, optimized chart rendering using memoization and caching, and maintained smooth performance with heavy datasets.",
+        category: "Frontend",
         image:
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
-        github: "#",
-        demo: "#",
+            "/alphatopia.png",
+        demo: "https://alphatopia.net/",
     },
     {
         id: 2,
         title: "Amora Dashboard – Analytics Platform",
         description:
-            "An admin analytics dashboard to monitor user activity, engagement metrics, and reports with clean UI, real-time updates, and scalable state management.",
+            "Built an admin analytics dashboard to monitor user activity, engagement metrics, and reports using React.js, Tailwind CSS, and Firebase. Used AI tools to accelerate feature development, refactor components, and enhance UI logic while maintaining clean state management and responsive design.",
         category: "Frontend",
-        tech: ["React", "Tailwind CSS", "Firebase", "JavaScript"],
         image:
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
-        github: "#",
-        demo: "#",
+            "/amora.png",
+        demo: "https://www.findamora.com/",
     },
     {
         id: 3,
         title: "HRX Brand Platform",
         description:
-            "A production-grade frontend and backend contribution for a major Indian brand, focused on improving UI responsiveness and reducing page load times.",
+            "Contributed to frontend and backend development for HRX, improving UI responsiveness and optimizing page load performance by ~25%. Used AI-assisted debugging and optimization to identify performance bottlenecks and refactor components for improved scalability and maintainability.",
         category: "Fullstack",
-        tech: ["React", "Node.js", "JavaScript", "Performance Optimization"],
         image:
-            "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop",
-        github: "#",
-        demo: "#",
+            "/hrx.png",
+        demo: "https://hrx.co.in/",
     },
     {
         id: 4,
-        title: "NHRDN – Member Management System",
+        title: "NHRDN Platform – Member Management System",
         description:
-            "A large-scale member management platform with secure data handling, role-based access control, and performance-focused architecture.",
+            "Built a large-scale member management platform with secure data handling, role-based access control, and performance optimizations. Used AI tools for code analysis and refactoring to improve code quality, reduce edge-case bugs, and accelerate development cycles.",
         category: "Fullstack",
-        tech: ["React", "Node.js", "MongoDB", "RBAC", "REST APIs"],
         image:
-            "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop",
-        github: "#",
-        demo: "#",
+            "/nhrdn.png",
+        demo: "https://www.nationalhrd.org/home",
     },
     {
         id: 5,
         title: "CaregiverSaathi – Support Platform",
         description:
-            "A caregiver support platform focused on accessibility, intuitive user experience, and streamlined admin workflows for users and administrators.",
-        category: "Frontend",
-        tech: ["React", "JavaScript", "Accessibility", "UI/UX"],
+            "Developed and maintained a caregiver support platform with a focus on accessibility, intuitive UI design, and streamlined admin workflows. Leveraged AI-driven tools to enhance UX flows, validate edge cases, and improve component reusability throughout the application.",
+        category: "Fullstack",
         image:
-            "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop",
-        github: "#",
-        demo: "#",
+            "/caregiver.png",
+        demo: "https://www.caregiversaathi.co.in/home",
+    },
+    {
+        id: 6,
+        title: "Courselo – Learning Platform",
+        description:
+            "Built a comprehensive learning platform using Next.js for the web and a dedicated desktop application using React and Electron. Developed the complete frontend and backend architecture from scratch, leveraging Firebase for seamless data synchronization, authentication, and a robust backend infrastructure.",
+        category: "Fullstack",
+        image:
+            "/courselo.png",
+        demo: "https://courselo.co/",
+    },
+    {
+        id: 7,
+        title: "SBI Youth for India",
+        description:
+            "A web platform for the SBI Youth for India fellowship program built using Vue.js. The platform is designed to provide a seamless user experience for prospective applicants and alumni, featuring responsive design, interactive elements, and optimized performance.",
+        category: "Fullstack",
+        image:
+            "/sbi.png",
+        demo: "https://youthforindia.org/",
+    },
+    {
+        id: 8,
+        title: "Borders and Threads",
+        description:
+            "A modern e-commerce platform built to seamlessly showcase products and drive conversions. Focused on delivering a premium shopping experience with intuitive navigation, engaging visual presentation, and highly optimized frontend performance.",
+        category: "Fullstack",
+        image:
+            "/bnt.png",
+        demo: "https://bordersnthreads.com/",
     },
 ];
 
@@ -102,70 +116,50 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
         transition={{ delay: index * 0.05, duration: 0.4 }}
         className="group relative"
     >
-        <Card className="h-full bg-card/20 border-border/50 backdrop-blur-xl overflow-hidden hover:border-blue-500/30 transition-all duration-500 rounded-2xl py-0">
-            {/* Image Preview with sophisticated overlay */}
-            <div className="relative aspect-16/10 overflow-hidden">
-                <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="block h-full cursor-pointer">
+            <Card className="h-full bg-card/20 border-border/50 backdrop-blur-xl overflow-hidden hover:border-blue-500/30 transition-all duration-500 rounded-2xl py-0">
+                {/* Image Preview with sophisticated overlay */}
+                <div className="relative aspect-16/10 overflow-hidden">
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
 
-                {/* Advanced Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent opacity-80" />
+                    {/* Advanced Overlay */}
+                    <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent opacity-80" />
 
-                <div className="absolute top-4 left-4 flex gap-2">
-                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[9px] font-black uppercase tracking-tighter text-white">
-                        {project.category === "Fullstack" ? <Server size={10} /> : <Layout size={10} />}
-                        {project.category}
+                    <div className="absolute top-4 left-4 flex gap-2">
+                        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[9px] font-black uppercase tracking-tighter text-white">
+                            {project.category === "Fullstack" ? <Server size={10} /> : <Layout size={10} />}
+                            {project.category}
+                        </div>
+                    </div>
+
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="p-4 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white shadow-xl flex items-center gap-2">
+                            <ExternalLink size={20} />
+                            <span className="text-sm font-bold tracking-wider uppercase">View Project</span>
+                        </div>
                     </div>
                 </div>
 
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="flex gap-4">
-                        <motion.a
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            href={project.demo}
-                            className="p-3 rounded-full bg-white text-black shadow-xl"
-                        >
-                            <Eye size={20} />
-                        </motion.a>
-                        <motion.a
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            href={project.github}
-                            className="p-3 rounded-full bg-black text-white border border-white/20 shadow-xl"
-                        >
-                            <BrandGithub size={20} />
-                        </motion.a>
+                <CardContent className="p-5 md:p-8 flex flex-col h-[calc(100%-aspect-16/10)]">
+                    <div className="space-y-3 grow">
+                        <h3 className="text-xl md:text-2xl font-black tracking-tighter group-hover:text-blue-400 transition-colors">
+                            {project.title}
+                        </h3>
+                        <p className="text-sm md:text-base text-muted-foreground font-medium leading-relaxed line-clamp-5">
+                            {project.description}
+                        </p>
+
                     </div>
-                </div>
-            </div>
+                </CardContent>
 
-            <CardContent className="p-5 md:p-8 flex flex-col h-[calc(100%-aspect-16/10)]">
-                <div className="space-y-3 grow">
-                    <h3 className="text-xl md:text-2xl font-black tracking-tighter group-hover:text-blue-400 transition-colors">
-                        {project.title}
-                    </h3>
-                    <p className="text-sm md:text-base text-muted-foreground font-medium leading-relaxed line-clamp-3">
-                        {project.description}
-                    </p>
-
-                    {/* Tech Stack Pills */}
-                    <div className="flex flex-wrap gap-2 pt-2">
-                        {project.tech.slice(0, 4).map((t, idx) => (
-                            <span key={idx} className="px-2 py-0.5 text-[10px] md:text-[11px] font-black uppercase bg-muted/50 border border-border/50 rounded-lg text-muted-foreground whitespace-nowrap">
-                                {t}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-            </CardContent>
-
-            {/* Subtle Gradient Glow */}
-            <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-        </Card>
+                {/* Subtle Gradient Glow */}
+                <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+            </Card>
+        </a>
     </motion.div>
 )
 

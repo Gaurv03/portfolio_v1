@@ -64,7 +64,7 @@ const linksArray = [
         name: "Resume",
         icon: FileDescription,
         color: "hover:border-emerald-600 hover:bg-emerald-600 hover:text-white",
-        link: "/resume.pdf"
+        link: "/gaurav_upadhyay_resume.pdf"
     },
     {
         name: "Email",

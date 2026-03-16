@@ -1,7 +1,6 @@
 import { motion } from "framer-motion"
 import {
     ChevronUp,
-    Code2,
     ExternalLink
 } from "lucide-react"
 import { NavLink } from "react-router"
@@ -61,10 +60,15 @@ export const Footer = () => {
                     {/* Branding & Bio */}
                     <div className="md:col-span-5 space-y-6">
                         <div className="flex items-center gap-3">
-                            <div className="relative bg-primary p-2 rounded-xl border border-border group">
-                                <Code2 size={24} className="text-primary-foreground group-hover:rotate-12 transition-transform" />
-                            </div>
-                            <span className="text-2xl font-black tracking-tighter">
+                            <motion.div
+                                whileHover={{ scale: 1.1, rotate: 5 }}
+                                whileTap={{ scale: 0.9 }}
+                                className="relative flex items-center justify-center"
+                            >
+                                <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-blue-500 rounded-lg blur-md opacity-20 group-hover:opacity-40 transition-opacity" />
+                                <img src="/logo.png" alt="Logo" className="size-10 md:size-10" />
+                            </motion.div>
+                            <span className="text-2xl font-black tracking-tighter gap-0">
                                 GAURAV<span className="text-blue-500">.</span>DEV
                             </span>
                         </div>

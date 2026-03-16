@@ -31,49 +31,38 @@ const Career = () => {
     const experiences = [
         {
             company: "GTS Infosoft LLC",
-            role: "Frontend Developer",
-            period: "July 2025 — Present",
-            location: "Jodhpur, Rajasthan, India",
-            description: "Leading the frontend transition of the core platform to Next.js. Focusing on performance optimization, advanced animations, and creating a unified design system.",
+            role: "Software Engineer",
+            period: "July 2025 - Present",
+            location: "Jodhpur, RJ",
+            description: "Led the development and maintenance of scalable frontend applications using React.js, TypeScript, and modern UI frameworks, ensuring high performance and maintainability.",
             achievements: [
-                "Reduced LCP by 40% using advanced caching strategies",
-                "Implemented a custom component library with Framer Motion",
-                "Collaborated with design teams to ensure pixel-perfect accessibility"
+                "Designed and owned reusable, component-based UI systems with ShadCN, MUI, and Tailwind CSS, improving UI consistency and accelerating feature delivery.",
+                "Led frontend-backend integration with RESTful APIs, ensuring reliable data flow, predictable state handling, and smooth user interactions.",
+                "Optimized frontend performance and infrastructure costs by implementing debouncing, caching, pagination, memoization, and reducing unnecessary API calls and re-renders.",
+                "Introduced and implemented a CI/CD pipeline, automating build and deployment workflows to improve release reliability, reduce manual effort, and shorten deployment cycles.",
+                "Improved deployment security and operational efficiency by centralizing environment variables and secrets using secure cloud-based key management, reducing credential exposure and configuration errors.",
+                "Refactored and modernized existing codebases, improving code quality, readability, and long-term scalability while lowering maintenance overhead."
             ],
-            tech: ["Next.js", "TypeScript", "Tailwind CSS", "Redux"],
+            tech: ["Next.js", "React.js", "TypeScript", "Node.js", "Express", "MongoDB", "PostgreSQL", "Tailwind CSS", "ShadCN", "MUI", "CI/CD"],
             color: "blue",
             icon: Code2
         },
         {
-            company: "AIAB Ventures",
-            role: "Fullstack Developer",
-            period: "March 2023 — March 2025",
-            location: "Remote/India",
-            description: "Developed and maintained end-to-end features for a high-traffic e-commerce engine. Architected scalable database schemas and built out critical payment integrations.",
+            company: "AIAB Ventures Pvt Ltd",
+            role: "Software Engineer",
+            period: "March 2023 - March 2025",
+            location: "Mumbai, MH",
+            description: "Led development and scaling of full-stack applications using React.js, Node.js, and MongoDB to support multiple client-facing products.",
             achievements: [
-                "Built a real-time inventory management system",
-                "Optimized SQL queries reducing server load by 25%",
-                "Integrated multi-gateway payment processing (Stripe, PayPal)"
+                "Designed and optimized RESTful APIs for multi-database architectures, enhancing backend performance, scalability, and data reliability.",
+                "Built responsive, data-driven dashboards using React.js and Vue.js, boosting UI responsiveness and user engagement.",
+                "Refactored legacy modules to reduce technical debt, improve performance, and streamline future development.",
+                "Owned and delivered critical features end-to-end, accelerating release cycles while maintaining high code quality."
             ],
-            tech: ["Node.js", "React.js", "Vue.js", "MongoDB", "PostgreSQL", "Express", "Docker"],
+            tech: ["React.js", "Node.js", "Express", "MongoDB", "Vue.js", "REST APIs"],
             color: "purple",
             icon: Terminal
-        },
-        // {
-        //     company: "Capistech IT Solutions",
-        //     role: "Graduate Intern",
-        //     period: "May 2022 — July 2022",
-        //     location: "Jodhpur, Rajasthan, India",
-        //     description: "Fast-tracked learning process while contributing to internal tooling and documentation. Assisted senior devs in debugging and feature rollouts.",
-        //     achievements: [
-        //         "Contributed to 10+ open-source internal widgets",
-        //         "Automated weekly reporting using Python scripts",
-        //         "Recognized as 'Rookie of the Quarter'"
-        //     ],
-        //     tech: ["JavaScript", "React.js", "MUI", "Tailwind CSS"],
-        //     color: "emerald",
-        //     icon: Sparkles
-        // }
+        }
     ]
 
     return (
