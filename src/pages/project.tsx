@@ -47,7 +47,7 @@ const projects: Project[] = [
         category: "Fullstack",
         image:
             "/hrx.png",
-        demo: "https://hrx.co.in/",
+        demo: "https://www.hrxbrand.com/home",
     },
     {
         id: 4,
