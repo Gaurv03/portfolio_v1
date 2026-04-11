@@ -3,7 +3,7 @@ import {
     ChevronUp,
     ExternalLink
 } from "lucide-react"
-import { NavLink } from "react-router"
+
 import { BrandGithub, BrandInstagram, BrandLinkedin, BrandTwitter } from "tabler-icons-react"
 
 import { scrollToTop } from "../lib/utils"
@@ -11,10 +11,10 @@ import { scrollToTop } from "../lib/utils"
 export const Footer = () => {
 
     const navLinks = [
-        { name: "About", path: "/" },
-        { name: "Career", path: "/career" },
-        { name: "Projects", path: "/projects" },
-        { name: "Contact", path: "/contact" },
+        { name: "About", path: "about" },
+        { name: "Career", path: "career" },
+        { name: "Projects", path: "projects" },
+        { name: "Contact", path: "contact" },
     ]
 
     const socialLinks = [
@@ -84,14 +84,17 @@ export const Footer = () => {
                         <ul className="space-y-3 md:space-y-4">
                             {navLinks.map((link) => (
                                 <li key={link.path}>
-                                    <NavLink
-                                        to={link.path}
-                                        onClick={scrollToTop}
+                                    <a
+                                        href={`#${link.path}`}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById(link.path)?.scrollIntoView({ behavior: "smooth" });
+                                        }}
                                         className="text-[11px] font-black uppercase tracking-widest text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors group"
                                     >
                                         <ChevronUp size={12} className="rotate-90 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                                         {link.name}
-                                    </NavLink>
+                                    </a>
                                 </li>
                             ))}
                         </ul>

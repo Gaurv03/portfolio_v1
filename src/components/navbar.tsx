@@ -1,21 +1,31 @@
-import { NavLink } from "react-router"
 import { ModeToggle } from "./mode-toggle"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-import { scrollToTop } from "../lib/utils"
 import { Menu, X, ArrowRight } from "lucide-react"
 
 export const Navbar = () => {
     const [scrolled, setScrolled] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
+    const [activeSection, setActiveSection] = useState("about")
 
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20)
+            
+            const sections = ["about", "career", "projects", "contact"]
+            let current = "about"
+            for (const section of sections) {
+                const element = document.getElementById(section)
+                if (element && window.scrollY >= element.offsetTop - 150) {
+                    current = section
+                }
+            }
+            setActiveSection(current)
         }
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
+
 
     // Close mobile menu on escape key
     useEffect(() => {
@@ -36,11 +46,21 @@ export const Navbar = () => {
     }, [isOpen]);
 
     const navLinks = [
-        { name: "About", path: "/" },
-        { name: "Career", path: "/career" },
-        { name: "Projects", path: "/projects" },
-        { name: "Contact", path: "/contact" },
+        { name: "About", path: "about" },
+        { name: "Career", path: "career" },
+        { name: "Projects", path: "projects" },
+        { name: "Contact", path: "contact" },
     ]
+
+    const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        e.preventDefault()
+        const element = document.getElementById(id)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+        }
+        setIsOpen(false)
+    }
+
 
     return (
         <>
@@ -55,7 +75,7 @@ export const Navbar = () => {
                         }`}
                 >
                     {/* Logo Section */}
-                    <NavLink to="/" onClick={() => { scrollToTop(); setIsOpen(false); }} className="flex items-center">
+                    <a href="#about" onClick={(e) => handleScrollTo(e, 'about')} className="flex items-center">
                         <motion.div
                             whileHover={{ scale: 1.1, rotate: 5 }}
                             whileTap={{ scale: 0.9 }}
@@ -64,38 +84,37 @@ export const Navbar = () => {
                             <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-blue-500 rounded-lg blur-md opacity-20 group-hover:opacity-40 transition-opacity" />
                             <img src="/logo.png" alt="Logo" className="size-10 md:size-10" />
                         </motion.div>
-                    </NavLink>
+                    </a>
 
                     {/* Navigation Links - Desktop */}
                     <div className="hidden md:flex items-center gap-0.5 md:gap-1">
-                        {navLinks.map((link) => (
-                            <NavLink
-                                key={link.path}
-                                to={link.path}
-                                onClick={scrollToTop}
-                                className={({ isActive }) => `
-                                    relative px-3 md:px-5 py-2 text-[11px] md:text-xs font-black uppercase tracking-wide md:tracking-widest transition-all duration-300
-                                    ${isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"}
-                                `}
-                            >
-                                {({ isActive }) => (
-                                    <>
-                                        <span className="relative z-10">{link.name}</span>
-                                        {isActive && (
-                                            <motion.div
-                                                layoutId="navbar-indicator"
-                                                className="absolute inset-0 bg-muted rounded-full border border-border"
-                                                transition={{
-                                                    type: "spring",
-                                                    stiffness: 380,
-                                                    damping: 30
-                                                }}
-                                            />
-                                        )}
-                                    </>
-                                )}
-                            </NavLink>
-                        ))}
+                        {navLinks.map((link) => {
+                            const isActive = activeSection === link.path;
+                            return (
+                                <a
+                                    key={link.path}
+                                    href={`#${link.path}`}
+                                    onClick={(e) => handleScrollTo(e, link.path)}
+                                    className={`
+                                        relative px-3 md:px-5 py-2 text-[11px] md:text-xs font-black uppercase tracking-wide md:tracking-widest transition-all duration-300
+                                        ${isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"}
+                                    `}
+                                >
+                                    <span className="relative z-10">{link.name}</span>
+                                    {isActive && (
+                                        <motion.div
+                                            layoutId="navbar-indicator"
+                                            className="absolute inset-0 bg-muted rounded-full border border-border"
+                                            transition={{
+                                                type: "spring",
+                                                stiffness: 380,
+                                                damping: 30
+                                            }}
+                                        />
+                                    )}
+                                </a>
+                            );
+                        })}
                     </div>
 
                     <div className="hidden md:block w-px h-6 bg-border mx-2" />
@@ -150,31 +169,31 @@ export const Navbar = () => {
                         className="fixed inset-0 z-40 md:hidden bg-background/60 backdrop-blur-2xl flex flex-col pt-32 px-4"
                     >
                         <nav className="flex flex-col gap-4 px-4">
-                            {navLinks.map((link, idx) => (
-                                <motion.div
-                                    key={link.path}
-                                    initial={{ x: -20, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{ delay: 0.1 + idx * 0.1 }}
-                                >
-                                    <NavLink
-                                        to={link.path}
-                                        onClick={() => {
-                                            setIsOpen(false);
-                                            scrollToTop();
-                                        }}
-                                        className={({ isActive }) => `
-                                            group flex items-center justify-between py-4 border-b border-border/50
-                                            ${isActive ? "text-primary italic" : "text-muted-foreground"}
-                                        `}
+                            {navLinks.map((link, idx) => {
+                                const isActive = activeSection === link.path;
+                                return (
+                                    <motion.div
+                                        key={link.path}
+                                        initial={{ x: -20, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: 0.1 + idx * 0.1 }}
                                     >
-                                        <span className="text-3xl font-black uppercase tracking-tighter group-hover:translate-x-2 transition-transform duration-300">
-                                            {link.name}
-                                        </span>
-                                        <ArrowRight size={24} className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-300" />
-                                    </NavLink>
-                                </motion.div>
-                            ))}
+                                        <a
+                                            href={`#${link.path}`}
+                                            onClick={(e) => handleScrollTo(e, link.path)}
+                                            className={`
+                                                group flex items-center justify-between py-4 border-b border-border/50
+                                                ${isActive ? "text-primary italic" : "text-muted-foreground"}
+                                            `}
+                                        >
+                                            <span className="text-3xl font-black uppercase tracking-tighter group-hover:translate-x-2 transition-transform duration-300">
+                                                {link.name}
+                                            </span>
+                                            <ArrowRight size={24} className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-300" />
+                                        </a>
+                                    </motion.div>
+                                );
+                            })}
                         </nav>
 
                         <motion.div

@@ -1,50 +1,29 @@
-import { Route, Routes } from 'react-router'
-import './App.css'
-import Layout from './components/layout'
-import { About } from './pages/about'
-import Project from './pages/project'
-import Contact from './pages/contact'
-import Career from './pages/career'
-import ScrollToTop from './components/scroll-to-top'
+import './App.css';
+import Layout from './components/layout';
+import { About } from './pages/about';
+import Project from './pages/project';
+import Contact from './pages/contact';
+import Career from './pages/career';
 
 function App() {
-
   return (
     <>
-      <ScrollToTop />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <About />
-            </Layout>
-          } />
-        <Route
-          path="/career"
-          element={
-            <Layout>
-              <Career />
-            </Layout>
-          } />
-        <Route
-          path="/projects"
-          element={
-            <Layout>
-              <Project />
-            </Layout>
-          } />
-        <Route
-          path="/contact"
-          element={
-            <Layout>
-              <Contact />
-            </Layout>
-          } />
-
-      </Routes>
+      <Layout>
+        <div id="about" className="pt-12">
+          <About />
+        </div>
+        <div id="career" className="pt-12">
+          <Career />
+        </div>
+        <div id="projects" className="pt-12">
+          <Project />
+        </div>
+        <div id="contact" className="pt-12">
+          <Contact />
+        </div>
+      </Layout>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
