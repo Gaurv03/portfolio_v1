@@ -23,14 +23,24 @@ const projects: Project[] = [
     demo: 'https://alphatopia.net/',
   },
   {
-    id: 2,
-    title: 'Amora Dashboard – Analytics Platform',
+    id: 10,
+    title: 'ElastecTrade',
     description:
-      'Built an admin analytics dashboard to monitor user activity, engagement metrics, and reports using React.js, Tailwind CSS, and Firebase. Used AI tools to accelerate feature development, refactor components, and enhance UI logic while maintaining clean state management and responsive design.',
+      'ElastecTrade is a modern trading platform that enables users to explore and invest in financial markets including crypto and forex through a secure and intuitive interface. It offers real-time insights, seamless transactions, and powerful tools designed for both beginners and experienced traders.',
     category: 'Frontend',
-    image: '/amora.png',
-    demo: 'https://www.findamora.com/',
+    image: '/elastecTrade.png',
+    demo: 'https://elastectrade.com/',
   },
+  {
+    id: 11,
+    title: 'IJOS',
+    description:
+      'Indian Jewellery Online Store is a comprehensive e-commerce and sourcing platform offering a wide range of traditional and modern Indian jewellery, including Kundan, Polki, and gemstone collections. It also empowers users and businesses with marketplace access, drop-shipping solutions, and jewellery business support tools.',
+    category: 'Fullstack',
+    image: '/ijos.png',
+    demo: 'https://indianjewelleryonlinestore.com/',
+  },
+
   {
     id: 3,
     title: 'HRX Brand Platform',
@@ -39,6 +49,24 @@ const projects: Project[] = [
     category: 'Fullstack',
     image: '/hrx.png',
     demo: 'https://www.hrxbrand.com/home',
+  },
+  {
+    id: 9,
+    title: 'Emotion Unlocked',
+    description:
+      'Emotion Unlocked is a cutting-edge emotional wellness platform that empowers individuals to understand, track, and improve their mental well-being through AI-powered insights and guided self-care programs.',
+    category: 'Fullstack',
+    image: '/eu.png',
+    demo: 'https://emotion-unlocked-prod.web.app/',
+  },
+  {
+    id: 6,
+    title: 'Courselo – Learning Platform',
+    description:
+      'Built a comprehensive learning platform using Next.js for the web and a dedicated desktop application using React and Electron. Developed the complete frontend and backend architecture from scratch, leveraging Firebase for seamless data synchronization, authentication, and a robust backend infrastructure.',
+    category: 'Fullstack',
+    image: '/courselo.png',
+    demo: 'https://courselo.co/',
   },
   {
     id: 4,
@@ -59,13 +87,23 @@ const projects: Project[] = [
     demo: 'https://www.caregiversaathi.co.in/home',
   },
   {
-    id: 6,
-    title: 'Courselo – Learning Platform',
+    id: 8,
+    title: 'Borders and Threads',
     description:
-      'Built a comprehensive learning platform using Next.js for the web and a dedicated desktop application using React and Electron. Developed the complete frontend and backend architecture from scratch, leveraging Firebase for seamless data synchronization, authentication, and a robust backend infrastructure.',
+      'A modern e-commerce platform built to seamlessly showcase products and drive conversions. Focused on delivering a premium shopping experience with intuitive navigation, engaging visual presentation, and highly optimized frontend performance.',
     category: 'Fullstack',
-    image: '/courselo.png',
-    demo: 'https://courselo.co/',
+    image: '/bnt.png',
+    demo: 'https://bordersnthreads.com/',
+  },
+
+  {
+    id: 2,
+    title: 'Amora Dashboard – Analytics Platform',
+    description:
+      'Built an admin analytics dashboard to monitor user activity, engagement metrics, and reports using React.js, Tailwind CSS, and Firebase. Used AI tools to accelerate feature development, refactor components, and enhance UI logic while maintaining clean state management and responsive design.',
+    category: 'Frontend',
+    image: '/amora.png',
+    demo: 'https://www.findamora.com/',
   },
   {
     id: 7,
@@ -75,15 +113,6 @@ const projects: Project[] = [
     category: 'Fullstack',
     image: '/sbi.png',
     demo: 'https://youthforindia.org/',
-  },
-  {
-    id: 8,
-    title: 'Borders and Threads',
-    description:
-      'A modern e-commerce platform built to seamlessly showcase products and drive conversions. Focused on delivering a premium shopping experience with intuitive navigation, engaging visual presentation, and highly optimized frontend performance.',
-    category: 'Fullstack',
-    image: '/bnt.png',
-    demo: 'https://bordersnthreads.com/',
   },
 ];
 
