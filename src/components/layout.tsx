@@ -18,6 +18,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     {/* Base Background */}
                     <div className="absolute inset-0 bg-background" />
 
+                    {/* Cloud Infrastructure Grid Overlay */}
+                    <div className="absolute inset-0 cloud-grid opacity-60 dark:opacity-80" />
+                    <div className="absolute inset-0 cloud-dots opacity-40 dark:opacity-50" />
+
                     {/* Noise Texture Overlay */}
                     <div
                         className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03] mix-blend-overlay"
@@ -26,34 +30,37 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         }}
                     />
 
-                    {/* Animated Gradient Blobs */}
-                    <div className="absolute inset-0 filter blur-[100px] sm:blur-[150px] opacity-50">
+                    {/* Animated Cloud & Infra Gradient Blobs */}
+                    <div className="absolute inset-0 filter blur-[100px] sm:blur-[150px] opacity-45 dark:opacity-60">
+                        {/* Cyan / Cloud Connectivity Blob */}
                         <motion.div
                             animate={{
                                 scale: [1, 1.2, 1],
-                                x: [0, 100, 0],
-                                y: [0, 50, 0],
+                                x: [0, 80, 0],
+                                y: [0, 40, 0],
                             }}
                             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-purple-500/20 dark:bg-purple-600/10"
+                            className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-cyan-500/15 dark:bg-cyan-500/10"
                         />
+                        {/* AWS Amber / Compute Blob */}
                         <motion.div
                             animate={{
-                                scale: [1.2, 1, 1.2],
-                                x: [0, -80, 0],
-                                y: [0, 100, 0],
+                                scale: [1.1, 1, 1.1],
+                                x: [0, -70, 0],
+                                y: [0, 80, 0],
                             }}
-                            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute top-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-blue-500/20 dark:bg-blue-600/10"
+                            transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-amber-500/15 dark:bg-amber-600/10"
                         />
+                        {/* Terraform Violet / K8s Blue Blob */}
                         <motion.div
                             animate={{
-                                scale: [1, 1.3, 1],
+                                scale: [1, 1.25, 1],
                                 x: [0, 60, 0],
-                                y: [0, -100, 0],
+                                y: [0, -80, 0],
                             }}
                             transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -bottom-[10%] left-[10%] w-[55%] h-[55%] rounded-full bg-pink-500/20 dark:bg-pink-600/10"
+                            className="absolute -bottom-[10%] left-[15%] w-[55%] h-[55%] rounded-full bg-indigo-500/15 dark:bg-indigo-600/10"
                         />
                     </div>
 

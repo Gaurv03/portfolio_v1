@@ -11,7 +11,7 @@ export const Navbar = () => {
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20)
-            
+
             const sections = ["about", "career", "projects", "contact"]
             let current = "about"
             for (const section of sections) {
@@ -81,7 +81,7 @@ export const Navbar = () => {
                             whileTap={{ scale: 0.9 }}
                             className="relative flex items-center justify-center"
                         >
-                            <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-blue-500 rounded-lg blur-md opacity-20 group-hover:opacity-40 transition-opacity" />
+                            <div className="absolute inset-0 bg-linear-to-r from-amber-500 via-cyan-500 to-blue-500 rounded-lg blur-md opacity-25 group-hover:opacity-45 transition-opacity" />
                             <img src="/logo.png" alt="Logo" className="size-10 md:size-10" />
                         </motion.div>
                     </a>
@@ -96,7 +96,7 @@ export const Navbar = () => {
                                     href={`#${link.path}`}
                                     onClick={(e) => handleScrollTo(e, link.path)}
                                     className={`
-                                        relative px-3 md:px-5 py-2 text-[11px] md:text-xs font-black uppercase tracking-wide md:tracking-widest transition-all duration-300
+                                        relative px-3 md:px-5 py-2 text-xs md:text-xs font-black uppercase tracking-wide md:tracking-widest transition-all duration-300
                                         ${isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"}
                                     `}
                                 >

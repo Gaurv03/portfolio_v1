@@ -2,17 +2,22 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   MessageSquare,
-  CheckCircle2,
-  ArrowRight,
-  Sparkles,
-  Zap,
+  ArrowUpRight,
   Send,
+  Phone,
+  Cloud,
+  MapPin,
+  Download,
+  CheckCircle2,
+  Clock,
+  Sparkles,
 } from 'lucide-react';
 import {
   BrandGithub,
   BrandLinkedin,
   BrandTwitter,
   BrandInstagram,
+  BrandMedium,
 } from 'tabler-icons-react';
 import { useState } from 'react';
 
@@ -30,306 +35,276 @@ const staggerContainer = {
   },
 };
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-  const [status, setStatus] = useState<'idle' | 'success'>('idle');
-  const [_focusedField, setFocusedField] = useState<string | null>(null);
+export const Contact = () => {
+  const [copied, setCopied] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('success');
-    setTimeout(() => setStatus('idle'), 1000);
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    });
+  const copyEmail = () => {
+    navigator.clipboard.writeText('gauravupadhyay786.gu@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
+
+  const contactChannels = [
+    {
+      label: 'Email',
+      value: 'gauravupadhyay786.gu@gmail.com',
+      href: 'mailto:gauravupadhyay786.gu@gmail.com',
+      icon: Send,
+      action: 'Send Email',
+      color: 'text-amber-400',
+      bg: 'bg-amber-500/10 border-amber-500/20',
+      hoverBorder: 'hover:border-amber-500/50',
+    },
+    {
+      label: 'Direct Phone',
+      value: '(+91) 9660-178191',
+      href: 'tel:+919660178191',
+      icon: Phone,
+      action: 'Call Directly',
+      color: 'text-cyan-400',
+      bg: 'bg-cyan-500/10 border-cyan-500/20',
+      hoverBorder: 'hover:border-cyan-500/50',
+    },
+    {
+      label: 'Instant Messaging',
+      value: 't.me/Gaurv_03',
+      href: 'https://t.me/Gaurv_03',
+      icon: MessageSquare,
+      action: 'Open Telegram',
+      color: 'text-purple-400',
+      bg: 'bg-purple-500/10 border-purple-500/20',
+      hoverBorder: 'hover:border-purple-500/50',
+    },
+    {
+      label: 'Location & Hub',
+      value: 'Jodhpur, Rajasthan, India',
+      href: '#',
+      icon: MapPin,
+      action: 'Available Worldwide (Remote)',
+      color: 'text-emerald-400',
+      bg: 'bg-emerald-500/10 border-emerald-500/20',
+      hoverBorder: 'hover:border-emerald-500/50',
+    },
+  ];
+
+  const socialLinks = [
+    {
+      name: 'LinkedIn',
+      handle: 'gaurav-upadhyay-dev03',
+      href: 'https://www.linkedin.com/in/gaurav-upadhyay-dev03/',
+      icon: BrandLinkedin,
+      color: 'hover:text-blue-400 hover:border-blue-500/40',
+    },
+    {
+      name: 'GitHub',
+      handle: 'Gaurv03',
+      href: 'https://github.com/Gaurv03',
+      icon: BrandGithub,
+      color: 'hover:text-white hover:border-white/40',
+    },
+    {
+      name: 'Medium',
+      handle: '@gauravupadhyay786.gu',
+      href: 'https://medium.com/@gauravupadhyay786.gu',
+      icon: BrandMedium,
+      color: 'hover:text-amber-400 hover:border-amber-500/40',
+    },
+    {
+      name: 'Twitter / X',
+      handle: '@GaurvUpadhyay',
+      href: 'https://x.com/GaurvUpadhyay',
+      icon: BrandTwitter,
+      color: 'hover:text-sky-400 hover:border-sky-500/40',
+    },
+    {
+      name: 'Instagram',
+      handle: '@_.gaurv._',
+      href: 'https://instagram.com/_.gaurv._',
+      icon: BrandInstagram,
+      color: 'hover:text-pink-400 hover:border-pink-500/40',
+    },
+  ];
 
   return (
     <motion.div
       initial="initial"
       animate="animate"
       variants={staggerContainer}
-      className="md:space-y-20 space-y-12 md:pb-12 pb-6 relative"
+      className="md:space-y-16 space-y-10 md:pb-12 pb-6 relative"
     >
-      {/* Hero Section */}
-      <div className="flex flex-col items-center text-center md:space-y-8 space-y-4 md:px-6">
+      {/* Hero Header */}
+      <div className="flex flex-col items-center text-center md:space-y-6 space-y-4 md:px-6">
         <motion.div
           variants={fadeInUp}
-          className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-black uppercase tracking-[0.2em] text-blue-500 dark:text-blue-400 backdrop-blur-sm"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px]  font-black uppercase tracking-[0.25em] text-amber-500 dark:text-amber-400 backdrop-blur-sm"
         >
-          <Zap size={12} fill="currentColor" />
-          Available for New Ventures
+          <Cloud size={12} fill="currentColor" />
+          Get In Touch
         </motion.div>
 
         <motion.h1
           variants={fadeInUp}
           className="text-3xl md:text-5xl font-black tracking-tighter leading-[0.9] text-foreground"
         >
-          Ready to make <br />
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 via-purple-500 to-pink-500">
-            magic happen?
+          Let's Connect & <br />
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-400 via-cyan-400 to-blue-500">
+            Build Something Scalable.
           </span>
         </motion.h1>
 
         <motion.p
           variants={fadeInUp}
-          className="text-muted-foreground md:text-xl text-lg max-w-2xl font-medium leading-relaxed"
+          className="text-muted-foreground md:text-lg text-base max-w-2xl font-medium leading-relaxed"
         >
-          Whether you're starting a new brand or need to scale your existing
-          architecture, I'm here to build the bridge between your vision and
-          reality.
+          Available for Software Engineering and Cloud & DevOps roles, infrastructure automation projects,
+          and technical consultations. Reach out through any channel below.
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch md:px-6">
-        {/* Left Column: Direct Action & Socials */}
-        <div className="lg:col-span-5 flex flex-col justify-between md:space-y-12 space-y-6">
-          <div className="space-y-8">
-            <motion.div variants={fadeInUp} className="space-y-4">
-              <h3 className="text-sm font-black uppercase tracking-widest text-muted-foreground flex items-center gap-4">
-                <Sparkles size={16} className="text-blue-500" />
-                The Direct Route
-              </h3>
-              <p className="md:text-2xl text-xl font-bold leading-tight">
-                Skip the formalities and jump straight into my orbit.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 gap-4">
-              <motion.a
-                href="mailto:gauravupadhyay786.gu@gmail.com"
-                variants={fadeInUp}
-                whileHover={{ scale: 1.02, x: 10 }}
-                className="group flex items-center justify-between p-6 rounded-2xl bg-card border border-border hover:border-blue-500/50 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.2)] transition-all"
-              >
-                <div className="flex items-center gap-5">
-                  <div className="p-4 rounded-2xl bg-blue-500/10 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                    <Send size={24} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-1">
-                      Email Me
-                    </p>
-                    <p className="text-lg font-bold">Start a thread</p>
-                  </div>
+      {/* Main Contact Grid */}
+      <div className="max-w-5xl mx-auto space-y-8">
+        {/* Direct Channels Cards */}
+        <motion.div
+          variants={fadeInUp}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
+        >
+          {contactChannels.map((item, idx) => (
+            <motion.a
+              key={idx}
+              href={item.href}
+              target={item.href.startsWith('http') ? '_blank' : undefined}
+              rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              whileHover={{ y: -4, scale: 1.01 }}
+              transition={{ duration: 0.2 }}
+              className={`p-6 rounded-3xl bg-card/40 border border-border/60 backdrop-blur-xl transition-all duration-300 ${item.hoverBorder} shadow-lg hover:shadow-primary/5 flex items-center justify-between group cursor-pointer`}
+            >
+              <div className="flex items-center gap-4">
+                <div className={`p-4 rounded-2xl ${item.bg} ${item.color} group-hover:scale-105 transition-transform`}>
+                  <item.icon size={24} />
                 </div>
-                <ArrowRight
-                  size={20}
-                  className="text-muted-foreground group-hover:text-blue-500 transition-colors"
-                />
-              </motion.a>
-
-              <motion.a
-                href="https://t.me/Gaurv_03"
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={fadeInUp}
-                whileHover={{ scale: 1.02, x: 10 }}
-                className="group flex items-center justify-between p-6 rounded-2xl bg-card border border-border hover:border-purple-500/50 hover:shadow-[0_0_30px_-10px_rgba(168,85,247,0.2)] transition-all"
-              >
-                <div className="flex items-center gap-5">
-                  <div className="p-4 rounded-2xl bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-colors">
-                    <MessageSquare size={24} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-1">
-                      Chat
-                    </p>
-                    <p className="text-lg font-bold">Telegram</p>
-                  </div>
+                <div>
+                  <span className="text-[10px]  font-black uppercase tracking-wider text-muted-foreground block mb-0.5">
+                    {item.label}
+                  </span>
+                  <span className="text-base md:text-lg font-bold text-foreground group-hover:text-primary transition-colors block">
+                    {item.value}
+                  </span>
+                  <span className="text-xs text-muted-foreground/80 font-medium">
+                    {item.action}
+                  </span>
                 </div>
-                <ArrowRight
-                  size={20}
-                  className="text-muted-foreground group-hover:text-purple-500 transition-colors"
-                />
-              </motion.a>
-            </div>
-          </div>
+              </div>
+              <ArrowUpRight
+                size={20}
+                className="text-muted-foreground group-hover:text-primary transition-colors opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </motion.a>
+          ))}
+        </motion.div>
 
-          <div className="space-y-6 md:pt-8 pt-4 border-t border-border">
-            <h4 className="text-[10px] md:text-left text-center font-black uppercase tracking-[0.3em] text-muted-foreground">
-              Digital Presence
-            </h4>
-            <div className="flex flex-wrap gap-3 md:justify-start justify-center">
-              {[
-                {
-                  icon: BrandLinkedin,
-                  href: 'https://www.linkedin.com/in/gaurav-upadhyay-dev03/',
-                  color: 'hover:bg-blue-600',
-                },
-                {
-                  icon: BrandGithub,
-                  href: 'https://github.com/Gaurv03',
-                  color: 'hover:bg-neutral-800',
-                },
-                {
-                  icon: BrandTwitter,
-                  href: 'https://x.com/GaurvUpadhyay',
-                  color: 'hover:bg-sky-500',
-                },
-                {
-                  icon: BrandInstagram,
-                  href: 'https://instagram.com/_.gaurv._',
-                  color: 'hover:bg-pink-600',
-                },
-              ].map((social, i) => (
-                <motion.a
-                  key={i}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variants={fadeInUp}
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`w-14 h-14 flex items-center justify-center rounded-2xl bg-card border border-border transition-all duration-300 ${social.color} hover:text-white group`}
-                >
-                  <social.icon
-                    size={22}
-                    className="group-hover:scale-110 transition-transform"
-                  />
-                </motion.a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: High-Impact Form */}
-        <motion.div variants={fadeInUp} className="lg:col-span-7">
-          <Card className="h-full border-none bg-linear-to-br from-card to-card/50 backdrop-blur-xl rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/5 border border-white/5 p-0">
-            <CardContent className="p-6 md:p-10 space-y-12">
-              <div className="space-y-2">
-                <h2 className="text-2xl md:text-4xl font-black tracking-tight">
-                  Fuel the vision
-                </h2>
-                <p className="text-muted-foreground font-medium md:text-lg text-base">
-                  Send over the briefing and let's get moving.
+        {/* Quick Action & Resume Card */}
+        <motion.div variants={fadeInUp}>
+          <Card className="border-border/60 bg-linear-to-br from-card/60 via-card/30 to-amber-500/5 backdrop-blur-xl rounded-3xl p-6 md:p-8 shadow-xl overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+            <CardContent className="p-0 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+              <div className="space-y-2 text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-mono font-bold text-emerald-400">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  Ready for Opportunities • Responding within 24 Hours
+                </div>
+                <h3 className="text-xl md:text-2xl font-black tracking-tight text-foreground">
+                  Looking for a verified copy of my credentials?
+                </h3>
+                <p className="text-sm text-muted-foreground font-medium max-w-xl">
+                  Download the latest resume featuring 3.5+ years of verified software engineering experience,
+                  cloud architecture specifications, and complete technical toolchains.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                      onFocus={() => setFocusedField('name')}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"
-                      placeholder=" "
-                    />
-                    <label
-                      className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}
-                    >
-                      Your Name
-                    </label>
-                  </div>
-                  <div className="relative">
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      onFocus={() => setFocusedField('email')}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"
-                      placeholder=" "
-                    />
-                    <label
-                      className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}
-                    >
-                      Email Address
-                    </label>
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <input
-                    type="text"
-                    required
-                    value={formData.subject}
-                    onChange={(e) =>
-                      setFormData({ ...formData, subject: e.target.value })
-                    }
-                    onFocus={() => setFocusedField('subject')}
-                    onBlur={() => setFocusedField(null)}
-                    className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"
-                    placeholder=" "
-                  />
-                  <label
-                    className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}
-                  >
-                    Inquiry Subject
-                  </label>
-                </div>
-
-                <div className="relative">
-                  <input
-                    type="text"
-                    required
-                    value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
-                    onFocus={() => setFocusedField('message')}
-                    onBlur={() => setFocusedField(null)}
-                    className="w-full py-3 bg-transparent border-b-2 border-border focus:border-blue-500 outline-none transition-all placeholder:text-muted-foreground/40 font-bold md:text-xl text-base peer"
-                    placeholder=""
-                  />
-                  <label
-                    className={`absolute left-0 top-3 text-muted-foreground/60 transition-all pointer-events-none peer-focus:-top-6 peer-not-placeholder-shown:-top-6 peer-focus:text-blue-500 peer-focus:text-sm peer-not-placeholder-shown:text-sm font-bold uppercase tracking-widest`}
-                  >
-                    Project Briefing
-                  </label>
-                </div>
-
-                <motion.button
-                  type="submit"
-                  disabled={status === 'success'}
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group relative w-full md:h-16 h-12 overflow-hidden rounded-2xl bg-foreground text-background font-black md:text-xl text-base transition-all shadow-xl shadow-foreground/10"
+              <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+                <button
+                  onClick={copyEmail}
+                  className="w-full sm:w-auto px-5 py-3 rounded-2xl bg-muted/60 border border-border hover:bg-muted text-foreground text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <div className="absolute inset-0 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative flex items-center justify-center gap-4">
-                    {status === 'success' ? (
-                      <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        className="flex items-center gap-3 text-white"
-                      >
-                        <CheckCircle2 size={28} />
-                        Dispatched
-                      </motion.div>
-                    ) : (
-                      <>
-                        <span className="group-hover:text-white transition-colors duration-300">
-                          Initiate Project
-                        </span>
-                        <ArrowRight
-                          size={24}
-                          className="group-hover:translate-x-3 group-hover:text-white transition-all duration-300"
-                        />
-                      </>
-                    )}
-                  </div>
-                </motion.button>
-              </form>
+                  {copied ? (
+                    <>
+                      <CheckCircle2 size={16} className="text-emerald-400" />
+                      Email Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles size={16} className="text-amber-400" />
+                      Copy Email
+                    </>
+                  )}
+                </button>
+
+                <a
+                  href="/gaurav_upadhyay_resume.pdf"
+                  download
+                  className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-primary text-primary-foreground text-xs font-black uppercase tracking-wider hover:opacity-90 hover:scale-105 transition-all shadow-lg flex items-center justify-center gap-2"
+                >
+                  <Download size={16} />
+                  Download Resume
+                </a>
+              </div>
             </CardContent>
           </Card>
+        </motion.div>
+
+        {/* Social & Technical Networks */}
+        <motion.div variants={fadeInUp} className="space-y-4 pt-4">
+          <div className="text-center space-y-1">
+            <h4 className="text-xs font-black uppercase tracking-[0.25em] text-muted-foreground">
+              Technical Networks & Writing
+            </h4>
+            <p className="text-xs text-muted-foreground">
+              Follow my open-source work, cloud articles, and professional updates
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            {socialLinks.map((social, idx) => (
+              <motion.a
+                key={idx}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -3 }}
+                className={`p-4 rounded-2xl bg-card/40 border border-border/60 backdrop-blur-md transition-all duration-300 ${social.color} hover:bg-muted/40 shadow-sm flex items-center justify-between group`}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-xl bg-muted/60 text-muted-foreground group-hover:text-inherit transition-colors">
+                    <social.icon size={18} />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-foreground block">
+                      {social.name}
+                    </span>
+                    <span className="text-[10px]  text-muted-foreground font-mono">
+                      {social.handle}
+                    </span>
+                  </div>
+                </div>
+                <ArrowUpRight
+                  size={14}
+                  className="text-muted-foreground group-hover:text-inherit opacity-50 group-hover:opacity-100 transition-opacity"
+                />
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Bottom Timezone / Availability Note */}
+        <motion.div
+          variants={fadeInUp}
+          className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-4"
+        >
+          <Clock size={13} className="text-amber-400" />
+          <span>Standard Timezone: <strong>IST (UTC +5:30)</strong> • Flexible for overlap with US/EU/APAC teams</span>
         </motion.div>
       </div>
     </motion.div>
