@@ -235,7 +235,7 @@ export const Footer = () => {
 
                         <div className="pt-2">
                             <a
-                                href="/gaurav_upadhyay_resume.pdf"
+                                href="/gaurav_upadhyay_resume_devops.pdf"
                                 download
                                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500 hover:text-background text-xs font-bold transition-all shadow-sm group"
                             >

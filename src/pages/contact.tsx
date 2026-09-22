@@ -243,7 +243,7 @@ export const Contact = () => {
                 </button>
 
                 <a
-                  href="/gaurav_upadhyay_resume.pdf"
+                  href="/gaurav_upadhyay_resume_devops.pdf"
                   download
                   className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-primary text-primary-foreground text-xs font-black uppercase tracking-wider hover:opacity-90 hover:scale-105 transition-all shadow-lg flex items-center justify-center gap-2"
                 >
