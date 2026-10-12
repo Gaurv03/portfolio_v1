@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar } from './navbar';
 import { Footer } from './footer';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Meteors } from './ui/meteors';
+import { GridBackground } from './ui/grid-background';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -11,67 +11,11 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <>
-
             <div className="relative min-h-screen flex flex-col overflow-x-hidden selection:bg-primary/30">
-                {/* Background Effects Container */}
-                <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
-                    {/* Base Background */}
-                    <div className="absolute inset-0 bg-background" />
+                {/* Background Grid with Moving Signal Lines */}
+                <GridBackground />
 
-                    {/* Cloud Infrastructure Grid Overlay */}
-                    <div className="absolute inset-0 cloud-grid opacity-60 dark:opacity-80" />
-                    <div className="absolute inset-0 cloud-dots opacity-40 dark:opacity-50" />
 
-                    {/* Noise Texture Overlay */}
-                    <div
-                        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03] mix-blend-overlay"
-                        style={{
-                            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
-                        }}
-                    />
-
-                    {/* Animated Cloud & Infra Gradient Blobs */}
-                    <div className="absolute inset-0 filter blur-[100px] sm:blur-[150px] opacity-45 dark:opacity-60">
-                        {/* Cyan / Cloud Connectivity Blob */}
-                        <motion.div
-                            animate={{
-                                scale: [1, 1.2, 1],
-                                x: [0, 80, 0],
-                                y: [0, 40, 0],
-                            }}
-                            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-cyan-500/15 dark:bg-cyan-500/10"
-                        />
-                        {/* AWS Amber / Compute Blob */}
-                        <motion.div
-                            animate={{
-                                scale: [1.1, 1, 1.1],
-                                x: [0, -70, 0],
-                                y: [0, 80, 0],
-                            }}
-                            transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-amber-500/15 dark:bg-amber-600/10"
-                        />
-                        {/* Terraform Violet / K8s Blue Blob */}
-                        <motion.div
-                            animate={{
-                                scale: [1, 1.25, 1],
-                                x: [0, 60, 0],
-                                y: [0, -80, 0],
-                            }}
-                            transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -bottom-[10%] left-[15%] w-[55%] h-[55%] rounded-full bg-indigo-500/15 dark:bg-indigo-600/10"
-                        />
-                    </div>
-
-                    {/* Falling Meteors Effect */}
-                    <div className="absolute inset-0 z-0">
-                        <Meteors
-                            number={100}
-                            maxDuration={30}
-                        />
-                    </div>
-                </div>
 
                 {/* Navbar */}
                 <Navbar />

@@ -71,26 +71,7 @@ export const Footer = () => {
     ]
 
     return (
-        <footer className="relative mt-24 border-t border-border/50 bg-card/25 backdrop-blur-2xl overflow-hidden">
-            {/* SaaS Glowing Aurora / Horizon Line */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-cyan-500/50 to-transparent z-10" />
-
-            {/* Animated Laser Light Beam Sweeping Across the Horizon */}
-            <motion.div
-                animate={{
-                    x: ["-100%", "200%"],
-                }}
-                transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    repeatDelay: 1,
-                }}
-                className="absolute top-0 left-0 w-1/3 h-0.5 bg-linear-to-r from-transparent  via-cyan-400 to-transparent blur-xs z-10 pointer-events-none"
-            />
-
-            {/* Ambient Radial Cloud Flare */}
-            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-36 bg-linear-to-b from-cyan-500/15 via-amber-500/10 to-transparent blur-3xl pointer-events-none" />
+        <footer className="relative mt-20 border-t border-border bg-card/40 backdrop-blur-md overflow-hidden">
 
             {/* SaaS Infinite Scrolling Telemetry Ribbon */}
             <div className="border-b border-border/40 py-3 bg-background/40 backdrop-blur-md overflow-hidden relative select-none">
@@ -130,18 +111,14 @@ export const Footer = () => {
             {/* Back to Top Button with SaaS Radar Pulse */}
             <div className="absolute top-10 right-8 md:right-16 z-20">
                 <div className="relative">
-                    {/* Radar Pulse Rings */}
-                    <span className="absolute -inset-1 rounded-full bg-cyan-400/20 animate-ping opacity-75 pointer-events-none" />
-                    <span className="absolute -inset-2 rounded-full bg-amber-400/10 blur-xs pointer-events-none" />
-
                     <motion.button
                         onClick={scrollToTop}
-                        whileHover={{ scale: 1.1, y: -3 }}
+                        whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="relative flex items-center justify-center size-11 rounded-full bg-background/80 border border-border/80 shadow-xl text-foreground hover:text-amber-400 hover:border-amber-400/50 backdrop-blur-xl transition-all group cursor-pointer"
+                        className="relative flex items-center justify-center size-10 rounded-full bg-muted/60 border border-border text-foreground hover:bg-muted transition-all cursor-pointer"
                         aria-label="Back to top"
                     >
-                        <ChevronUp size={20} className="group-hover:-translate-y-0.5 transition-transform" />
+                        <ChevronUp size={18} />
                     </motion.button>
                 </div>
             </div>
@@ -199,7 +176,7 @@ export const Footer = () => {
                                             e.preventDefault();
                                             document.getElementById(link.path)?.scrollIntoView({ behavior: "smooth" });
                                         }}
-                                        className="text-xs font-bold uppercase tracking-wider text-muted-foreground hover:text-foreground flex items-center gap-2 transition-all group hover:translate-x-1"
+                                        className="text-xs font-medium text-muted-foreground hover:text-foreground flex items-center gap-2 transition-all group hover:translate-x-1"
                                     >
                                         <span className="size-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
                                         {link.name}
